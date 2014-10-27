@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="RayTracing" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/RayTracing" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="include" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/RayTracing" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O3" />
+					<Add directory="include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+			<Target title="Debug_Win32">
+				<Option output="bin/Debug/RayTracing" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-DSYSTEM_WIN32" />
+					<Add directory="include" />
+				</Compiler>
+			</Target>
+			<Target title="Release_Win32">
+				<Option output="bin/Release/RayTracing" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O3" />
+					<Add option="-DSYSTEM_WIN32" />
+					<Add directory="include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-std=c++11" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="include/Camera.h" />
+		<Unit filename="include/Color.h" />
+		<Unit filename="include/Image.h" />
+		<Unit filename="include/Matrix.h" />
+		<Unit filename="include/Parallelogram.h" />
+		<Unit filename="include/Radiance.h" />
+		<Unit filename="include/Ray.h" />
+		<Unit filename="include/Sample.h" />
+		<Unit filename="include/Scene.h" />
+		<Unit filename="include/SceneCornellBox.h" />
+		<Unit filename="include/SceneEarth.h" />
+		<Unit filename="include/SceneSmallpt.h" />
+		<Unit filename="include/SceneTest.h" />
+		<Unit filename="include/Shape.h" />
+		<Unit filename="include/Sphere.h" />
+		<Unit filename="include/Texture.h" />
+		<Unit filename="include/TextureChess.h" />
+		<Unit filename="include/TextureColor.h" />
+		<Unit filename="include/TextureImage.h" />
+		<Unit filename="include/Transformable.h" />
+		<Unit filename="include/Triangle.h" />
+		<Unit filename="include/TriangleMesh.h" />
+		<Unit filename="include/Vector2.h" />
+		<Unit filename="include/Vector3.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/Camera.cpp" />
+		<Unit filename="src/Color.cpp" />
+		<Unit filename="src/Image.cpp" />
+		<Unit filename="src/Matrix.cpp" />
+		<Unit filename="src/Parallelogram.cpp" />
+		<Unit filename="src/Radiance.cpp" />
+		<Unit filename="src/Ray.cpp" />
+		<Unit filename="src/Sample.cpp" />
+		<Unit filename="src/Scene.cpp" />
+		<Unit filename="src/SceneCornellBox.cpp" />
+		<Unit filename="src/SceneEarth.cpp" />
+		<Unit filename="src/SceneSmallpt.cpp" />
+		<Unit filename="src/SceneTest.cpp" />
+		<Unit filename="src/Shape.cpp" />
+		<Unit filename="src/Sphere.cpp" />
+		<Unit filename="src/Texture.cpp" />
+		<Unit filename="src/TextureChess.cpp" />
+		<Unit filename="src/TextureColor.cpp" />
+		<Unit filename="src/TextureImage.cpp" />
+		<Unit filename="src/Transformable.cpp" />
+		<Unit filename="src/Triangle.cpp" />
+		<Unit filename="src/TriangleMesh.cpp" />
+		<Unit filename="src/Vector2.cpp" />
+		<Unit filename="src/Vector3.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
