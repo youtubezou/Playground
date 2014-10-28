@@ -12,6 +12,10 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-Weffc++" />
+					<Add option="-pedantic" />
+					<Add option="-Wextra" />
+					<Add option="-Wall" />
 					<Add option="-g" />
 					<Add directory="include" />
 				</Compiler>
@@ -35,11 +39,18 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/DynamicArray.h" />
 		<Unit filename="include/Image.h" />
+		<Unit filename="include/OrthonormalBasis.h" />
+		<Unit filename="include/Random.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="include/Rgb.h" />
+		<Unit filename="include/Vector3.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Image.cpp" />
-		<Unit filename="src/Rgb.cpp" />
+		<Unit filename="src/OrthonormalBasis.cpp" />
+		<Unit filename="src/Vector3.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
