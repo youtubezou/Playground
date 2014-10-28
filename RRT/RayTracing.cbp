@@ -36,10 +36,10 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/Image.h" />
-		<Unit filename="include/RGB.h" />
+		<Unit filename="include/Rgb.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Image.cpp" />
-		<Unit filename="src/RGB.cpp" />
+		<Unit filename="src/Rgb.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

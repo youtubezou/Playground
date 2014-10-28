@@ -9,8 +9,11 @@ class Image
 public:
     Image();
     virtual ~Image();
+    Image(const Image&) = default;
     Image(int width, int height);
     Image(int width, int height, const Rgb& background);
+
+    Image& operator =(const Image&) = default;
 
     void clear();
     bool set(int x, int y, const Rgb& color);

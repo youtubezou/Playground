@@ -18,8 +18,6 @@ public:
     void setGreen(float green);
     void setBlue(float blue);
 
-    Rgb& operator =(const Rgb& right);
-
     Rgb operator +() const;
     Rgb operator -() const;
     friend Rgb operator *(float f, const Rgb& c);
@@ -29,6 +27,7 @@ public:
     friend Rgb operator -(const Rgb& c1, const Rgb& c2);
     friend Rgb operator *(const Rgb& c1, const Rgb& c2);
     friend Rgb operator /(const Rgb& c1, const Rgb& c2);
+    Rgb& operator =(const Rgb& right);
     Rgb& operator +=(const Rgb& right);
     Rgb& operator -=(const Rgb& right);
     Rgb& operator *=(const Rgb& right);
@@ -56,7 +55,8 @@ inline Rgb::Rgb(float red, float green, float blue) :
 {
 }
 
-inline Rgb::Rgb(const Rgb& rgb)
+inline Rgb::Rgb(const Rgb& rgb) :
+    _r(0.0f), _g(0.0f), _b(0.0f)
 {
     *this = rgb;
 }
