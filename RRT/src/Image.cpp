@@ -1,104 +1,133 @@
 #include <cmath>
 #include <cstdlib>
 #include <fstream>
-#include <iostream>
 #include "Image.h"
 using namespace std;
 
 Image::Image() :
-    _w(0), _h(0), _d(nullptr) {
+    _raster(nullptr), _width(0), _height(0)
+{
+}
+
+Image::~Image()
+{
+    clear();
 }
 
 Image::Image(int width, int height) :
-    _w(width), _h(height), _d(nullptr) {
-    _d = new Color*[_w];
-    for (int x = 0; x < _w; ++x) {
-        _d[x] = new Color[_h];
+    _raster(nullptr), _width(width), _height(height)
+{
+    _raster = new Rgb*[width];
+    for (int x = 0; x < width; ++x)
+    {
+        _raster[x] = new Rgb[height];
     }
 }
 
-Image::~Image() {
-    clear();
-}
-
-void Image::clear() {
-    if (_d != nullptr) {
-        for (int x = 0; x < w(); ++x) {
-            delete[] _d[x];
+Image::Image(int width, int height, const Rgb& background) :
+    _raster(nullptr), _width(width), _height(height)
+{
+    _raster = new Rgb*[width];
+    for (int x = 0; x < width; ++x)
+    {
+        _raster[x] = new Rgb[height];
+        for (int y = 0; y < height; ++y)
+        {
+            _raster[x][y] = background;
         }
-        delete[] _d;
-        _d = nullptr;
     }
 }
 
-void Image::readPPM(const char* fileName) {
-    ifstream fin;
-    fin.open(fileName, ios::in | ios::binary);
-    if (!fin.is_open()) {
-        cerr << "ERROR: Could not open file: " << fileName << endl;
+void Image::clear()
+{
+    if (nullptr != _raster)
+    {
+        for (int x = 0; x < _width; ++x)
+        {
+            delete[] _raster[x];
+        }
+        delete[] _raster;
+        _raster = nullptr;
+        _width = 0;
+        _height = 0;
+    }
+}
+
+bool Image::set(int x, int y, const Rgb& color)
+{
+    if (0 <= x && x < _width)
+    {
+        if (0 <= y && y < _height)
+        {
+            _raster[x][y] = color;
+            return true;
+        }
+    }
+    return false;
+}
+
+void Image::gammaCorrect(float gamma)
+{
+    float power = 1.0 / gamma;
+    for (int x = 0; x < _width; ++x)
+    {
+        for (int y = 0; y < _height; ++y)
+        {
+            _raster[x][y] = Rgb(pow(_raster[x][y].r(), power),
+                                pow(_raster[x][y].g(), power),
+                                pow(_raster[x][y].b(), power));
+        }
+    }
+}
+
+void Image::writePPM(ostream& out)
+{
+    out << "P6" << endl;
+    out << _width << ' ' << _height << endl;
+    out << "255" << endl;
+    for (int y = _height - 1; y >= 0; --y)
+    {
+        for (int x = 0; x < _width; ++x)
+        {
+            out.put((unsigned char)(255 * _raster[x][y].r()));
+            out.put((unsigned char)(255 * _raster[x][y].g()));
+            out.put((unsigned char)(255 * _raster[x][y].b()));
+        }
+    }
+}
+
+void Image::readPPM(string fileName)
+{
+    ifstream in;
+    in.open(fileName.c_str());
+    if (!in.is_open())
+    {
+        cerr << "ERROR: Could not open file '" << fileName << "'." << endl;
         exit(-1);
     }
-    clear();
     int num;
     char ch, type;
     char r, g, b;
-    fin.get(ch);
-    fin.get(type);
-    fin >> _w >> _h >> num;
-    _d = new Color*[w()];
-    for (int i = 0; i < w(); ++i) {
-        _d[i] = new Color[h()];
+    in.get(ch);
+    in.get(type);
+    in >> _width >> _height >> num;
+    clear();
+    _raster = new Rgb*[_width];
+    for (int i = 0; i < _width; ++i)
+    {
+        _raster[i] = new Rgb[_height];
     }
-    fin.get(ch);
-    for (int y = h() - 1; y >= 0; --y) {
-        for (int x = 0; x < w(); ++x) {
-            fin.get(r);
-            fin.get(g);
-            fin.get(b);
-            set(x, y, Color(((double)(unsigned char)r) / 255.0,
-                            ((double)(unsigned char)g) / 255.0,
-                            ((double)(unsigned char)b) / 255.0));
+    in.get(ch);
+    for (int y = _height - 1; y >= 0; --y)
+    {
+        for (int x = 0; x < _width; ++x)
+        {
+            in.get(r);
+            in.get(g);
+            in.get(b);
+            _raster[x][y] = Rgb((float)((unsigned char)r) / 255.0,
+                                (float)((unsigned char)g) / 255.0,
+                                (float)((unsigned char)b) / 255.0);
         }
     }
-    fin.close();
-}
-
-void Image::writePPM(const char* fileName) {
-    ofstream fout;
-    fout.open(fileName, ios::out | ios::binary);
-    if (!fout.is_open()) {
-        cerr << "ERROR: Could not open file: " << fileName << endl;
-        exit(-1);
-    }
-    fout << "P6" << endl;
-    fout << w() << ' ' << h() << endl;
-    fout << "255" << endl;
-    for (int y = h() - 1; y >= 0; --y) {
-        for (int x = 0; x <= w(); ++x) {
-            fout.put((unsigned char)(255 * get(x, y).r()));
-            fout.put((unsigned char)(255 * get(x, y).g()));
-            fout.put((unsigned char)(255 * get(x, y).b()));
-        }
-    }
-    fout.close();
-}
-
-void Image::writePPM(const char* fileName, double gamma) {
-    ofstream fout;
-    fout.open(fileName, ios::out | ios::binary);
-    if (!fout.is_open()) {
-        cerr << "ERROR: Could not open file: " << fileName << endl;
-        exit(-1);
-    }
-    fout << "P6" << endl;
-    fout << w() << ' ' << h() << endl;
-    fout << "255" << endl;
-    for (int y = h() - 1; y >= 0; --y) {
-        for (int x = 0; x < w(); ++x) {
-            fout.put((unsigned char)(255 * pow(get(x, y).r(), 1.0 / gamma)));
-            fout.put((unsigned char)(255 * pow(get(x, y).g(), 1.0 / gamma)));
-            fout.put((unsigned char)(255 * pow(get(x, y).b(), 1.0 / gamma)));
-        }
-    }
-    fout.close();
 }
