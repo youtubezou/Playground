@@ -9,6 +9,11 @@ struct HitRecord
     float t;
     Vector3 normal;
     Rgb color;
+
+    HitRecord() :
+        t(0.0f), normal(), color()
+    {
+    }
 };
 
 class Shape

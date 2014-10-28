@@ -9,6 +9,9 @@ public:
     DynamicArray(int size);
     virtual ~DynamicArray();
 
+    DynamicArray<T>(const DynamicArray<T>&) = default;
+    DynamicArray& operator =(const DynamicArray<T>&) = default;
+
     bool append(T item);
     bool truncate();
     void clear();
