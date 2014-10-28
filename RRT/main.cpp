@@ -2,6 +2,8 @@
 #include "Rgb.h"
 #include "Image.h"
 #include "Vector3.h"
+#include "OrthonormalBasis.h"
+#include "DynamicArray.h"
 using namespace std;
 
 int main()
