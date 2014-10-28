@@ -45,11 +45,17 @@
 		<Unit filename="include/Random.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="include/Ray.h" />
 		<Unit filename="include/Rgb.h" />
+		<Unit filename="include/Shape.h" />
+		<Unit filename="include/Sphere.h" />
+		<Unit filename="include/Triangle.h" />
 		<Unit filename="include/Vector3.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Image.cpp" />
 		<Unit filename="src/OrthonormalBasis.cpp" />
+		<Unit filename="src/Sphere.cpp" />
+		<Unit filename="src/Triangle.cpp" />
 		<Unit filename="src/Vector3.cpp" />
 		<Extensions>
 			<code_completion />
