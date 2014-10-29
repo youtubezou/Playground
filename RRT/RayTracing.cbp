@@ -47,15 +47,19 @@
 		</Unit>
 		<Unit filename="include/Ray.h" />
 		<Unit filename="include/Rgb.h" />
+		<Unit filename="include/Sample.h" />
 		<Unit filename="include/Shape.h" />
 		<Unit filename="include/Sphere.h" />
 		<Unit filename="include/Triangle.h" />
+		<Unit filename="include/Vector2.h" />
 		<Unit filename="include/Vector3.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Image.cpp" />
 		<Unit filename="src/OrthonormalBasis.cpp" />
+		<Unit filename="src/Sample.cpp" />
 		<Unit filename="src/Sphere.cpp" />
 		<Unit filename="src/Triangle.cpp" />
+		<Unit filename="src/Vector2.cpp" />
 		<Unit filename="src/Vector3.cpp" />
 		<Extensions>
 			<code_completion />
