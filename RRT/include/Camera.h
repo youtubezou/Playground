@@ -9,7 +9,7 @@ class Camera
 public:
     Camera();
     Camera(const Camera& camera);
-    Camera(Vector3 center, Vector3 gaze, Vector3 up, float aperture, float u0, float v0, float u1, float v1, float distance);
+    Camera(Vector3 center, Vector3 gaze, Vector3 vup, float aperture, float u0, float v0, float u1, float v1, float distance);
     Ray getRay(float a, float b, float xi1, float xi2);
 
 private:

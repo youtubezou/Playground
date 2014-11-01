@@ -15,16 +15,16 @@ Camera::Camera(const Camera& camera) :
     *this = camera;
 }
 
-Camera::Camera(Vector3 center, Vector3 gaze, Vector3 up, float aperture, float u0, float v0, float u1, float v1, float distance) :
+Camera::Camera(Vector3 center, Vector3 gaze, Vector3 vup, float aperture, float u0, float v0, float u1, float v1, float distance) :
     _center(center), _corner(), _across(), _up(), _uvw(),
     _radius(0.0f), _u0(u0), _v0(v0), _u1(u1), _v1(v1),
     _distance(distance)
 {
     _radius = aperture / 2.0f;
-    _uvw.initFromWV(-gaze, up);
+    _uvw.initFromWV(-gaze, vup);
     _corner = _center + _u0*_uvw.u() + _v0*_uvw.v() - _distance*_uvw.w();
-    _across = (_u0 - _u1) * _uvw.u();
-    _up = (_v0 - _v1) * _uvw.v();
+    _across = (_u1 - _u0) * _uvw.u();
+    _up = (_v1 - _v0) * _uvw.v();
 }
 
 Ray Camera::getRay(float a, float b, float xi1, float xi2)
