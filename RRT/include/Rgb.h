@@ -121,7 +121,7 @@ inline Rgb operator *(const Rgb& c, float f)
 
 inline Rgb operator /(const Rgb& c, float f)
 {
-    return Rgb(c._r / f, c._g * f, c._b / f);
+    return Rgb(c._r / f, c._g / f, c._b / f);
 }
 
 inline Rgb operator +(const Rgb& c1, const Rgb& c2)

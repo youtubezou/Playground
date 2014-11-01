@@ -39,7 +39,9 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/Camera.h" />
 		<Unit filename="include/DynamicArray.h" />
+		<Unit filename="include/DynamicSphere.h" />
 		<Unit filename="include/Image.h" />
 		<Unit filename="include/OrthonormalBasis.h" />
 		<Unit filename="include/Random.h">
@@ -54,6 +56,8 @@
 		<Unit filename="include/Vector2.h" />
 		<Unit filename="include/Vector3.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Camera.cpp" />
+		<Unit filename="src/DynamicSphere.cpp" />
 		<Unit filename="src/Image.cpp" />
 		<Unit filename="src/OrthonormalBasis.cpp" />
 		<Unit filename="src/Sample.cpp" />
