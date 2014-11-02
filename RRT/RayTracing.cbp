@@ -43,6 +43,9 @@
 		<Unit filename="include/DynamicArray.h" />
 		<Unit filename="include/DynamicSphere.h" />
 		<Unit filename="include/Image.h" />
+		<Unit filename="include/ImageTexture.h" />
+		<Unit filename="include/MarbleTexture.h" />
+		<Unit filename="include/NoiseTexture.h" />
 		<Unit filename="include/OrthonormalBasis.h" />
 		<Unit filename="include/Random.h">
 			<Option target="&lt;{~None~}&gt;" />
@@ -51,18 +54,30 @@
 		<Unit filename="include/Rgb.h" />
 		<Unit filename="include/Sample.h" />
 		<Unit filename="include/Shape.h" />
+		<Unit filename="include/SimpleTexture.h" />
+		<Unit filename="include/SolidNoise.h" />
 		<Unit filename="include/Sphere.h" />
+		<Unit filename="include/Texture.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="include/Triangle.h" />
+		<Unit filename="include/UVSphere.h" />
 		<Unit filename="include/Vector2.h" />
 		<Unit filename="include/Vector3.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Camera.cpp" />
 		<Unit filename="src/DynamicSphere.cpp" />
 		<Unit filename="src/Image.cpp" />
+		<Unit filename="src/ImageTexture.cpp" />
+		<Unit filename="src/MarbleTexture.cpp" />
+		<Unit filename="src/NoiseTexture.cpp" />
 		<Unit filename="src/OrthonormalBasis.cpp" />
 		<Unit filename="src/Sample.cpp" />
+		<Unit filename="src/SimpleTexture.cpp" />
+		<Unit filename="src/SolidNoise.cpp" />
 		<Unit filename="src/Sphere.cpp" />
 		<Unit filename="src/Triangle.cpp" />
+		<Unit filename="src/UVSphere.cpp" />
 		<Unit filename="src/Vector2.cpp" />
 		<Unit filename="src/Vector3.cpp" />
 		<Extensions>

@@ -1,17 +1,22 @@
 #ifndef SHAPE_H
 #define SHAPE_H
 
+#include "Vector2.h"
+#include "Vector3.h"
 #include "Rgb.h"
 #include "Ray.h"
+#include "Texture.h"
 
 struct HitRecord
 {
     float t;
     Vector3 normal;
-    Rgb color;
+    Vector2 uv;
+    Vector3 point;
+    Texture* texture;
 
     HitRecord() :
-        t(0.0f), normal(), color()
+        t(0.0f), normal(), uv(), point(), texture(nullptr)
     {
     }
 };

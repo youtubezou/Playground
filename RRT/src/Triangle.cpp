@@ -54,7 +54,7 @@ bool Triangle::hit(const Ray& ray, float tmin, float tmax, float time, HitRecord
     }
     record.t = t;
     record.normal = unitVector(cross(_b - _a, _c - _a));
-    record.color = _color;
+    //record.color = _color;
     return true;
 }
 

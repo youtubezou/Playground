@@ -16,6 +16,9 @@ public:
     Image& operator =(const Image&) = default;
 
     void clear();
+    int width() const;
+    int height() const;
+    Rgb getPixel(int x, int y);
     bool set(int x, int y, const Rgb& color);
     void gammaCorrect(float gamma);
 

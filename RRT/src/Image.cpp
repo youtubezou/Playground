@@ -53,6 +53,21 @@ void Image::clear()
     }
 }
 
+int Image::width() const
+{
+    return _width;
+}
+
+int Image::height() const
+{
+    return _height;
+}
+
+Rgb Image::getPixel(int x, int y)
+{
+    return _raster[x][y];
+}
+
 bool Image::set(int x, int y, const Rgb& color)
 {
     if (0 <= x && x < _width)
@@ -99,7 +114,7 @@ void Image::writePPM(ostream& out)
 void Image::readPPM(string fileName)
 {
     ifstream in;
-    in.open(fileName.c_str());
+    in.open(fileName.c_str(), ios::in | ios::binary);
     if (!in.is_open())
     {
         cerr << "ERROR: Could not open file '" << fileName << "'." << endl;
