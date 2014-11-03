@@ -35,15 +35,14 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="include/Basis.h" />
 		<Unit filename="include/Camera.h" />
 		<Unit filename="include/Color.h" />
-		<Unit filename="include/Filter.h" />
 		<Unit filename="include/Image.h" />
 		<Unit filename="include/Radiance.h" />
 		<Unit filename="include/Ray.h" />
 		<Unit filename="include/Sample.h" />
 		<Unit filename="include/Scene.h" />
+		<Unit filename="include/SceneLightAndDiffuse.h" />
 		<Unit filename="include/SceneSingleLuminaire.h" />
 		<Unit filename="include/SceneSmallpt.h" />
 		<Unit filename="include/Shape.h" />
@@ -54,15 +53,14 @@
 		<Unit filename="include/Vector2.h" />
 		<Unit filename="include/Vector3.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="src/Basis.cpp" />
 		<Unit filename="src/Camera.cpp" />
 		<Unit filename="src/Color.cpp" />
-		<Unit filename="src/Filter.cpp" />
 		<Unit filename="src/Image.cpp" />
 		<Unit filename="src/Radiance.cpp" />
 		<Unit filename="src/Ray.cpp" />
 		<Unit filename="src/Sample.cpp" />
 		<Unit filename="src/Scene.cpp" />
+		<Unit filename="src/SceneLightAndDiffuse.cpp" />
 		<Unit filename="src/SceneSingleLuminaire.cpp" />
 		<Unit filename="src/SceneSmallpt.cpp" />
 		<Unit filename="src/Shape.cpp" />

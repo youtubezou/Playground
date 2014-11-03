@@ -1,5 +1,4 @@
 #include <cstdio>
-#include "Filter.h"
 #include "Sphere.h"
 #include "TextureColor.h"
 #include "SceneSingleLuminaire.h"
@@ -48,9 +47,7 @@ void SceneSingleLuminaire::initCamera()
 
 void SceneSingleLuminaire::initSample()
 {
-    _sample = new Sample(4, Sample::JITTERED);
-    Filter filter;
-    filter.filter(*_sample, Filter::TENT);
+    _sample = new Sample(4, Sample::SampleType::JITTERED, Sample::FilterType::TENT);
 }
 
 void SceneSingleLuminaire::initImage()

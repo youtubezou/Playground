@@ -6,12 +6,17 @@
 class Sample
 {
 public:
-    enum Type
+    enum class SampleType
     {
         RANDOM,
         JITTERED,
     };
-    Sample(int num, Type type);
+    enum class FilterType
+    {
+        BOX,
+        TENT,
+    };
+    Sample(int num, SampleType sampleType, FilterType filterType);
     virtual ~Sample();
 
     float x(int index) const;
@@ -19,12 +24,19 @@ public:
     int num() const;
     Vector2& operator[](int index);
 
+    void resample();
+
 private:
     Vector2* _samples;
     int _num;
+    SampleType _sampleType;
+    FilterType _filterType;
 
     void randomSample();
     void jitteredSample();
+
+    void boxFilter();
+    void tentFilter();
 };
 
 inline float Sample::x(int index) const

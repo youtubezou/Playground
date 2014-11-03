@@ -28,7 +28,7 @@ bool Sphere::hitTest(const Ray& ray, HitRecord& record) const
     {
         t = (- b + discriminant) / (2.0f * a);
     }
-    if (t < 0.001f)
+    if (t < 0.0f)
     {
         return false;
     }

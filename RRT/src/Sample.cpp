@@ -7,19 +7,12 @@ inline float random()
     return (float)rand() / (float)RAND_MAX;
 }
 
-Sample::Sample(int num, Type type) :
-    _samples(nullptr), _num(num)
+Sample::Sample(int num, SampleType sampleType, FilterType filterType) :
+    _samples(nullptr), _num(num),
+    _sampleType(sampleType), _filterType(filterType)
 {
     _samples = new Vector2[num];
-    switch (type)
-    {
-    case RANDOM:
-        randomSample();
-        break;
-    case JITTERED:
-        jitteredSample();
-        break;
-    }
+    resample();
 }
 
 Sample::~Sample()
@@ -30,6 +23,28 @@ Sample::~Sample()
 Vector2& Sample::operator[](int index)
 {
     return _samples[index];
+}
+
+void Sample::resample()
+{
+    switch (_sampleType)
+    {
+    case SampleType::RANDOM:
+        randomSample();
+        break;
+    case SampleType::JITTERED:
+        jitteredSample();
+        break;
+    }
+    switch (_filterType)
+    {
+    case FilterType::BOX:
+        boxFilter();
+        break;
+    case FilterType::TENT:
+        tentFilter();
+        break;
+    }
 }
 
 void Sample::randomSample()
@@ -52,5 +67,24 @@ void Sample::jitteredSample()
             float y = (j + random()) / sqrtNum;
             _samples[index++].set(x, y);
         }
+    }
+}
+void Sample::boxFilter()
+{
+    for (int i = 0; i < _num; ++i)
+    {
+        _samples[i].set(_samples[i].x() - 0.5f, _samples[i].y() - 0.5f);
+    }
+}
+
+void Sample::tentFilter()
+{
+    for (int i = 0; i < _num; ++i)
+    {
+        float x = _samples[i].x();
+        float y = _samples[i].y();
+        x = x < 0.5f ? (float)sqrt(2.0 * x) - 1.0f : 1.0f - (float)sqrt(2.0 - 2.0 * x);
+        y = y < 0.5f ? (float)sqrt(2.0 * y) - 1.0f : 1.0f - (float)sqrt(2.0 - 2.0 * x);
+        _samples[i].set(x, y);
     }
 }

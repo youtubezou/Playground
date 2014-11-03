@@ -1,7 +1,6 @@
 #include <cstdio>
 #include "Sphere.h"
 #include "TextureColor.h"
-#include "Filter.h"
 #include "SceneSmallpt.h"
 
 SceneSmallpt::SceneSmallpt()
@@ -84,9 +83,7 @@ void SceneSmallpt::initCamera()
 
 void SceneSmallpt::initSample()
 {
-    _sample = new Sample(4, Sample::JITTERED);
-    Filter filter;
-    filter.filter(*_sample, Filter::TENT);
+    _sample = new Sample(4, Sample::SampleType::JITTERED, Sample::FilterType::TENT);
 }
 
 void SceneSmallpt::initImage()

@@ -25,7 +25,7 @@ Color Radiance::radiance(const Ray& ray, int depth)
     {
         if (_shapes[i]->hitTest(ray, tempRecord))
         {
-            if (tempRecord.t < record.t)
+            if (tempRecord.t > 1e-4f && tempRecord.t < record.t)
             {
                 record = tempRecord;
                 shape = _shapes[i];
@@ -54,22 +54,32 @@ Color Radiance::radiance(const Ray& ray, int depth)
 
 Color Radiance::idealDiffuse(const Ray& ray, const HitRecord& record, Shape* shape, int depth)
 {
-    float theta = 2 * PI * random();
-    float length = sqrt(random());
+    float r1 = random();
+    float r2 = random();
+    float costheta = sqrt(1.0f - r1);
+    float sintheta = sqrt(1.0f - costheta * costheta);
+    float phi = 2.0f * PI * r2;
     Vector3 w = record.normal;
-    if (dot(ray.d(), record.normal) >= 0.0f)
+    if (dot(ray.d(), record.normal) > 0.0f)
     {
-        w = -record.normal;
+        w = -w;
     }
-    Vector3 u(0.0f, 1.0f, 0.0f);
-    if (fabs(w.x()) > 0.1f)
+    Vector3 u;
+    if (fabs(w.x()) < 0.01f)
     {
-        u = cross(Vector3(1.0f, 0.0f, 0.0f), w);
+        u = cross(Vector3(1.0f, 0.0f, 0.0f), w).norm();
+    }
+    else
+    {
+        u = cross(Vector3(0.0f, 1.0f, 0.0f), w).norm();
     }
     Vector3 v = cross(w, u);
-    Vector3 d = (u * cos(theta) * length + v * sin(theta) * length + w * sqrt(1.0 - length * length)).norm();
-    Ray r(record.point, d);
-    return shape->emission() + record.texture->getColor(record.uv) * radiance(r, depth + 1);
+    Vector3 b = cos(phi) * sintheta * u +
+                sin(phi) * sintheta * v +
+                costheta * w;
+    Ray r(record.point, b);
+    Color color = record.texture->getColor(record.uv);
+    return shape->emission() + color * radiance(r, depth + 1);
 }
 
 Color Radiance::idealSpecular(const Ray& ray, const HitRecord& record, Shape* shape, int depth)

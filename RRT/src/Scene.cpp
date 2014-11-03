@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <cstdlib>
 #include "Radiance.h"
 #include "Scene.h"
 
@@ -64,11 +65,15 @@ void Scene::render(int maxRayNum)
                     _image->set(x, y, _image->get(x, y) + color);
                 }
             }
-            printf("\rRay: %d\tPercent: %.2f%%", rayNum, 100.0 * x / _image->w());
+            printf("\rRay: %d\tPercent: %.2f%%\t\t", rayNum, 100.0 * x / _image->w());
         }
         rayNum += _sample->num();
         sprintf(name, "%s_%d.ppm", _name, rayNum);
-        _image->writePPM(name, rayNum);
+        if (rand() < 8000)
+        {
+            _image->writePPM(name, rayNum);
+        }
+        _sample->resample();
     }
 }
 
