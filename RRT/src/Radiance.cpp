@@ -86,7 +86,8 @@ Color Radiance::idealSpecular(const Ray& ray, const HitRecord& record, Shape* sh
 {
     Vector3 d = ray.d() - 2.0f * dot(ray.d(), record.normal) * record.normal;
     Ray r(record.point, d);
-    return shape->emission() + record.texture->getColor(record.uv) * radiance(r, depth + 1);
+    Color color = record.texture->getColor(record.uv);
+    return shape->emission() + color * radiance(r, depth + 1);
 }
 
 Color Radiance::idealRefraction(const Ray& ray, const HitRecord& record, Shape* shape, int depth)

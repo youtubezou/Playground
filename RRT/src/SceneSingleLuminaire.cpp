@@ -26,7 +26,7 @@ void SceneSingleLuminaire::initShapes()
 {
     _textureNum = 5;
     _textures = new Texture*[1];
-    _textures[0] = new TextureColor(Color(0.0, 0.0, 0.0));
+    _textures[0] = new TextureColor(Color(0.0f, 0.0f, 0.0f));
 
     _shapeNum = 1;
     _shapes = new Shape*[1];

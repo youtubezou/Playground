@@ -42,6 +42,7 @@
 		<Unit filename="include/Ray.h" />
 		<Unit filename="include/Sample.h" />
 		<Unit filename="include/Scene.h" />
+		<Unit filename="include/SceneDiffuseAndMirror.h" />
 		<Unit filename="include/SceneLightAndDiffuse.h" />
 		<Unit filename="include/SceneSingleLuminaire.h" />
 		<Unit filename="include/SceneSmallpt.h" />
@@ -60,6 +61,7 @@
 		<Unit filename="src/Ray.cpp" />
 		<Unit filename="src/Sample.cpp" />
 		<Unit filename="src/Scene.cpp" />
+		<Unit filename="src/SceneDiffuseAndMirror.cpp" />
 		<Unit filename="src/SceneLightAndDiffuse.cpp" />
 		<Unit filename="src/SceneSingleLuminaire.cpp" />
 		<Unit filename="src/SceneSmallpt.cpp" />
