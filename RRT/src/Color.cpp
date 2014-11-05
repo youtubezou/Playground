@@ -1,7 +1,7 @@
 #include "Color.h"
 using namespace std;
 
-Color::Color(float r, float g, float b)
+Color::Color(double r, double g, double b)
 {
     _d[0] = r;
     _d[1] = g;

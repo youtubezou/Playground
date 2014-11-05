@@ -1,3 +1,4 @@
+#include <cmath>
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
@@ -66,9 +67,9 @@ void Image::readPPM(const char* fileName)
             fin.get(r);
             fin.get(g);
             fin.get(b);
-            set(x, y, Color(((float)(unsigned char)r) / 255.0f,
-                            ((float)(unsigned char)g) / 255.0f,
-                            ((float)(unsigned char)b) / 255.0f));
+            set(x, y, Color(((double)(unsigned char)r) / 255.0,
+                            ((double)(unsigned char)g) / 255.0,
+                            ((double)(unsigned char)b) / 255.0));
         }
     }
     fin.close();
@@ -98,7 +99,7 @@ void Image::writePPM(const char* fileName)
     fout.close();
 }
 
-void Image::writePPM(const char* fileName, float scale)
+void Image::writePPM(const char* fileName, double gamma)
 {
     ofstream fout;
     fout.open(fileName, ios::out | ios::binary);
@@ -114,9 +115,9 @@ void Image::writePPM(const char* fileName, float scale)
     {
         for (int x = 0; x < w(); ++x)
         {
-            fout.put((unsigned char)(255 * get(x, y).r() / scale));
-            fout.put((unsigned char)(255 * get(x, y).g() / scale));
-            fout.put((unsigned char)(255 * get(x, y).b() / scale));
+            fout.put((unsigned char)(255 * pow(get(x, y).r(), 1.0 / gamma)));
+            fout.put((unsigned char)(255 * pow(get(x, y).g(), 1.0 / gamma)));
+            fout.put((unsigned char)(255 * pow(get(x, y).b(), 1.0 / gamma)));
         }
     }
     fout.close();

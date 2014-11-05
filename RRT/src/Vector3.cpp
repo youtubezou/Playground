@@ -1,7 +1,7 @@
 #include "Vector3.h"
 using namespace std;
 
-Vector3::Vector3(float x, float y, float z)
+Vector3::Vector3(double x, double y, double z)
 {
     _d[0] = x;
     _d[1] = y;

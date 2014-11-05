@@ -19,8 +19,8 @@ public:
     Sample(int num, SampleType sampleType, FilterType filterType);
     virtual ~Sample();
 
-    float x(int index) const;
-    float y(int index) const;
+    double x(int index) const;
+    double y(int index) const;
     int num() const;
     Vector2& operator[](int index);
 
@@ -39,12 +39,12 @@ private:
     void tentFilter();
 };
 
-inline float Sample::x(int index) const
+inline double Sample::x(int index) const
 {
     return _samples[index].x();
 }
 
-inline float Sample::y(int index) const
+inline double Sample::y(int index) const
 {
     return _samples[index].y();
 }

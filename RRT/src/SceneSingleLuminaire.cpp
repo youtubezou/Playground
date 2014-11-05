@@ -19,30 +19,30 @@ void SceneSingleLuminaire::initSceneName()
 
 void SceneSingleLuminaire::initBackground()
 {
-    _background = Color(0.0f, 0.0f, 0.0f);
+    _background = Color(0.0, 0.0, 0.0);
 }
 
 void SceneSingleLuminaire::initShapes()
 {
     _textureNum = 5;
     _textures = new Texture*[1];
-    _textures[0] = new TextureColor(Color(0.0f, 0.0f, 0.0f));
+    _textures[0] = new TextureColor(Color(0.0, 0.0, 0.0));
 
     _shapeNum = 1;
     _shapes = new Shape*[1];
-    _shapes[0] = new Sphere(Vector3(0.0f, 0.0f, -100.0f), 30.0f);
+    _shapes[0] = new Sphere(Vector3(0.0, 0.0, -100.0), 30.0);
     _shapes[0]->setTexture(_textures[0]);
     _shapes[0]->setMaterial(Material::DIFFUSE);
-    _shapes[0]->setEmission(Color(12.0f, 12.0f, 12.0f));
+    _shapes[0]->setEmission(Color(12.0, 12.0, 12.0));
 }
 
 void SceneSingleLuminaire::initCamera()
 {
-    _camera = new Camera(Vector3(0.0f, 0.0f, 0.0f),
-                         Vector3(0.0f, 0.0f, -1.0f),
-                         Vector3(0.0f, 1.0f, 0.0f),
-                         1.0f, 100.0f,
-                         -50.0f, -50.0f, 50.0f, 50.0f);
+    _camera = new Camera(Vector3(0.0, 0.0, 0.0),
+                         Vector3(0.0, 0.0, -1.0),
+                         Vector3(0.0, 1.0, 0.0),
+                         1.0, 100.0,
+                         -50.0, -50.0, 50.0, 50.0);
 }
 
 void SceneSingleLuminaire::initSample()

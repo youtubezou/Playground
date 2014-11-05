@@ -1,8 +1,8 @@
 #include <cmath>
 #include "Sphere.h"
-const float PI = acos(-1.0);
+const double PI = acos(-1.0);
 
-Sphere::Sphere(const Vector3& center, float radius) :
+Sphere::Sphere(const Vector3& center, double radius) :
     _c(center), _r(radius)
 {
 }
@@ -14,34 +14,34 @@ Sphere::~Sphere()
 bool Sphere::hitTest(const Ray& ray, HitRecord& record) const
 {
     Vector3 o_c = ray.o() - _c;
-    float a = dot(ray.d(), ray.d());
-    float b = dot(2.0f * ray.d(), o_c);
-    float c = dot(o_c, o_c) - _r * _r;;
-    float discriminant = b * b - 4.0f * a * c;
-    if (discriminant < 0.0f)
+    double a = dot(ray.d(), ray.d());
+    double b = dot(2.0 * ray.d(), o_c);
+    double c = dot(o_c, o_c) - _r * _r;;
+    double discriminant = b * b - 4.0 * a * c;
+    if (discriminant < 0.0)
     {
         return false;
     }
     discriminant = sqrt(discriminant);
-    float t = (- b - discriminant) / (2.0f * a);
-    if (t < 0.0f)
+    double t = (- b - discriminant) / (2.0 * a);
+    if (t < 1e-4)
     {
-        t = (- b + discriminant) / (2.0f * a);
+        t = (- b + discriminant) / (2.0 * a);
     }
-    if (t < 0.0f)
+    if (t < 1e-4)
     {
         return false;
     }
     record.t = t;
     record.point = ray.at(t);
     record.normal = (record.point - _c).norm();
-    float phi = atan2(record.normal.x(), record.normal.z());
-    if (phi < 0.0f)
+    double phi = atan2(record.normal.x(), record.normal.z());
+    if (phi < 0.0)
     {
-        phi += PI * 2.0f;
+        phi += PI * 2.0;
     }
-    float theta = acos(record.normal.y());
-    record.uv = Vector2(phi / (PI * 2.0f), theta / PI);
+    double theta = acos(record.normal.y());
+    record.uv = Vector2(phi / (PI * 2.0), theta / PI);
     record.texture = texture();
     return true;
 }

@@ -9,10 +9,10 @@ public:
     Radiance(Shape** shapes, int n, const Color& background);
     virtual ~Radiance();
 
-    Color radiance(const Ray& ray, int depth);
-    Color idealDiffuse(const Ray& ray, const HitRecord& record, Shape* shape, int depth);
-    Color idealSpecular(const Ray& ray, const HitRecord& record, Shape* shape, int depth);
-    Color idealRefraction(const Ray& ray, const HitRecord& record, Shape* shape, int depth);
+    Color radiance(const Ray& ray, int depth, bool emit = true);
+    Color idealDiffuse(const Ray& ray, const HitRecord& record, Shape* shape, const Color& color, int depth, bool emit);
+    Color idealSpecular(const Ray& ray, const HitRecord& record, Shape* shape, const Color& color, int depth);
+    Color idealRefraction(const Ray& ray, const HitRecord& record, Shape* shape, const Color& color, int depth);
 
 private:
     Shape** _shapes;

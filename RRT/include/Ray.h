@@ -14,7 +14,7 @@ public:
     const Vector3& o() const;
     const Vector3& d() const;
 
-    Vector3 at(float t) const;
+    Vector3 at(double t) const;
 
     friend std::ostream& operator<<(std::ostream& out, const Ray& ray);
 

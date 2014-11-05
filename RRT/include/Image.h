@@ -19,7 +19,7 @@ public:
 
     void readPPM(const char* fileName);
     void writePPM(const char* fileName);
-    void writePPM(const char* fileName, float scale);
+    void writePPM(const char* fileName, double gamma);
 
 private:
     int _w, _h;

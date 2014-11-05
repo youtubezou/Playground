@@ -17,7 +17,7 @@ class Shape;
 
 struct HitRecord
 {
-    float t;
+    double t;
     Vector3 point;
     Vector3 normal;
     Vector2 uv;
@@ -39,8 +39,8 @@ public:
     const Color& emission() const;
     void setEmission(const Color& color);
 
-    float dielectric() const;
-    void setDielectric(float dielectric);
+    double dielectric() const;
+    void setDielectric(double dielectric);
 
     virtual bool hitTest(const Ray& ray, HitRecord& record) const;
 
@@ -48,7 +48,7 @@ private:
     Texture* _texture;
     Material _material;
     Color _emission;
-    float _dielectric;
+    double _dielectric;
 };
 
 #endif // SHAPE_H

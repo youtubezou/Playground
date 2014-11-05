@@ -2,9 +2,9 @@
 #include <cstdlib>
 #include "Sample.h"
 
-inline float random()
+inline double random()
 {
-    return (float)rand() / (float)RAND_MAX;
+    return (double)rand() / (double)RAND_MAX;
 }
 
 Sample::Sample(int num, SampleType sampleType, FilterType filterType) :
@@ -63,8 +63,8 @@ void Sample::jitteredSample()
     {
         for (int j = 0; j < sqrtNum; ++j)
         {
-            float x = (i + random()) / sqrtNum;
-            float y = (j + random()) / sqrtNum;
+            double x = (i + random()) / sqrtNum;
+            double y = (j + random()) / sqrtNum;
             _samples[index++].set(x, y);
         }
     }
@@ -73,7 +73,7 @@ void Sample::boxFilter()
 {
     for (int i = 0; i < _num; ++i)
     {
-        _samples[i].set(_samples[i].x() - 0.5f, _samples[i].y() - 0.5f);
+        _samples[i].set(_samples[i].x() - 0.5, _samples[i].y() - 0.5);
     }
 }
 
@@ -81,10 +81,10 @@ void Sample::tentFilter()
 {
     for (int i = 0; i < _num; ++i)
     {
-        float x = _samples[i].x();
-        float y = _samples[i].y();
-        x = x < 0.5f ? (float)sqrt(2.0 * x) - 1.0f : 1.0f - (float)sqrt(2.0 - 2.0 * x);
-        y = y < 0.5f ? (float)sqrt(2.0 * y) - 1.0f : 1.0f - (float)sqrt(2.0 - 2.0 * x);
+        double x = _samples[i].x();
+        double y = _samples[i].y();
+        x = x < 0.5 ? sqrt(2.0 * x) - 1.0 : 1.0 - sqrt(2.0 - 2.0 * x);
+        y = y < 0.5 ? sqrt(2.0 * y) - 1.0 : 1.0 - sqrt(2.0 - 2.0 * x);
         _samples[i].set(x, y);
     }
 }

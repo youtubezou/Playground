@@ -1,13 +1,13 @@
 #include "Camera.h"
 
 Camera::Camera(const Vector3& center, const Vector3& gaze, const Vector3& vup,
-               float aperture, float distance, float u0, float v0, float u1, float v1) :
+               double aperture, double distance, double u0, double v0, double u1, double v1) :
     _center(center), _gaze(gaze),
     _u(), _v(), _w(),
     _o(), _a(), _b(),
-    _radius(0.0f)
+    _radius(0.0)
 {
-    _radius = aperture / 2.0f;
+    _radius = aperture / 2.0;
     _w = - _gaze.norm();
     _u = cross(vup, _w).norm();
     _v = cross(_w, _u);
@@ -20,10 +20,10 @@ Camera::~Camera()
 {
 }
 
-Ray Camera::getRay(float a, float b, float ra, float rb)
+Ray Camera::getRay(double a, double b, double ra, double rb)
 {
-    Vector3 origin = _center + 2.0f * (ra - 0.5f) * _radius * _u +
-                               2.0f * (rb - 0.5f) * _radius * _v;
+    Vector3 origin = _center + 2.0 * (ra - 0.5) * _radius * _u +
+                               2.0 * (rb - 0.5) * _radius * _v;
     Vector3 target = _o + a * _a + b * _b;
     return Ray(origin, (target - origin).norm());
 }

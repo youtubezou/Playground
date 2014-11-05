@@ -1,7 +1,7 @@
 #include "Vector2.h"
 using namespace std;
 
-Vector2::Vector2(float x, float y)
+Vector2::Vector2(double x, double y)
 {
     _d[0] = x;
     _d[1] = y;

@@ -15,7 +15,7 @@ Ray::~Ray()
 {
 }
 
-Vector3 Ray::at(float t) const
+Vector3 Ray::at(double t) const
 {
     return o() + t * d();
 }

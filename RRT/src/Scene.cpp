@@ -46,35 +46,41 @@ void Scene::init()
 
 void Scene::render(int maxRayNum)
 {
-    int rayNum = 0;
+    int rayNum = maxRayNum / _sample->num();
     char name[128];
+    sprintf(name, "%s_%d.ppm", _name, maxRayNum);
     Radiance rad(_shapes, _shapeNum, _background);
-    while (rayNum < maxRayNum)
+    Color* color = new Color[_sample->num()];
+    for (int x = 0; x < _image->w(); ++x)
     {
-        for (int x = 0; x < _image->w(); ++x)
+        for (int y = 0; y < _image->h(); ++y)
         {
-            for (int y = 0; y < _image->h(); ++y)
+            for (int i = 0; i < _sample->num(); ++i)
             {
+                color[i] = Color();
+            }
+            for (int r = 0; r < rayNum; ++r)
+            {
+                _sample->resample();
                 for (int i = 0; i < _sample->num(); ++i)
                 {
-                    float a = (x + _sample->x(i)) / _image->w();
-                    float b = (y + _sample->y(i)) / _image->h();
-                    Ray ray = _camera->getRay(a, b, 0.0f, 0.0f);
-                    Color color = rad.radiance(ray, 0);
-                    color.clamp();
-                    _image->set(x, y, _image->get(x, y) + color);
+                    double a = (x + _sample->x(i)) / _image->w();
+                    double b = (y + _sample->y(i)) / _image->h();
+                    Ray ray = _camera->getRay(a, b, 0.0, 0.0);
+                    color[i] = color[i] + rad.radiance(ray, 0);
                 }
             }
-            printf("\rRay: %d\tPercent: %.2f%%\t\t", rayNum, 100.0 * x / _image->w());
+            for (int i = 0; i < _sample->num(); ++i)
+            {
+                color[i] = color[i] / rayNum;
+                color[i].clamp();
+                _image->set(x, y, _image->get(x, y) + color[i] / _sample->num());
+            }
         }
-        rayNum += _sample->num();
-        sprintf(name, "%s_%d.ppm", _name, rayNum);
-        if (rand() < 8000)
-        {
-            _image->writePPM(name, rayNum);
-        }
-        _sample->resample();
+        printf("\rRay: %d\tPercent: %.2f%%", maxRayNum, 100.0 * (x + 1) / _image->w());
     }
+    delete[] color;
+    _image->writePPM(name, 2.2);
 }
 
 void Scene::initSceneName()
@@ -85,7 +91,7 @@ void Scene::initSceneName()
 
 void Scene::initBackground()
 {
-    _background = Color(0.0f, 0.0f, 0.0f);
+    _background = Color(0.0, 0.0, 0.0);
 }
 
 void Scene::initShapes()
@@ -98,15 +104,19 @@ void Scene::initShapes()
 
 void Scene::initCamera()
 {
-    _camera = nullptr;
+    _camera = new Camera(Vector3(0.0, 0.0, 0.0),
+                         Vector3(0.0, 0.0, -1.0),
+                         Vector3(0.0, 1.0, 0.0),
+                         1.0, 100.0,
+                         -50.0, -50.0, 50.0, 50.0);
 }
 
 void Scene::initSample()
 {
-    _sample = nullptr;
+    _sample = new Sample(4, Sample::SampleType::JITTERED, Sample::FilterType::TENT);
 }
 
 void Scene::initImage()
 {
-    _image = nullptr;
+    _image = new Image(500, 500);
 }

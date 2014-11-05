@@ -3,8 +3,8 @@
 Shape::Shape() :
     _texture(nullptr),
     _material(Material::DIFFUSE),
-    _emission(0.0f, 0.0f, 0.0f),
-    _dielectric(1.0f)
+    _emission(0.0, 0.0, 0.0),
+    _dielectric(1.0)
 {
 }
 
@@ -42,12 +42,12 @@ void Shape::setEmission(const Color& color)
     _emission = color;
 }
 
-float Shape::dielectric() const
+double Shape::dielectric() const
 {
     return _dielectric;
 }
 
-void Shape::setDielectric(float dielectric)
+void Shape::setDielectric(double dielectric)
 {
     _dielectric = dielectric;
 }
