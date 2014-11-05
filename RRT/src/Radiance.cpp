@@ -44,16 +44,16 @@ Color Radiance::radiance(const Ray& ray, int depth, bool emit)
     {
         return shape->emission();
     }
-    double p = max(max(color.r(), color.g()), color.b());
-    if (depth >= 5)
-    {
-        if (random() > p)
-        {
-            return shape->emission();
-        }
-        color = color * (1.0 / p);
-    }
-    if (depth >= 100)
+//    double p = max(max(color.r(), color.g()), color.b());
+//    if (depth >= 5)
+//    {
+//        if (depth >= 5000 || random() > p)
+//        {
+//            return shape->emission();
+//        }
+//        color = color * (1.0 / p);
+//    }
+    if (depth >= 10)
     {
         return shape->emission();
     }
@@ -100,54 +100,6 @@ Color Radiance::idealDiffuse(const Ray& ray, const HitRecord& record, Shape* sha
     {
         nl = -nl;
     }
-//    Color total;
-//    for (int i = 0; i < _shapeNum; ++i)
-//    {
-//        Shape* s = _shapes[i];
-//        if (s->emission().r() < 1e-6 && s->emission().g() < 1e-6 && s->emission().b() < 1e-6)
-//        {
-//            continue;
-//        }
-//        Vector3 w = -record.normal;
-//        Vector3 u = cross(Vector3(1.0, 0.0, 0.0), w).norm();
-//        if (fabs(w.x()) > 1e-4)
-//        {
-//            u = cross(Vector3(0.0, 1.0, 0.0), w).norm();
-//        }
-//        Vector3 v = cross(w, u);
-//        Vector3 x = record.point;
-//        Vector3 sc = ((Sphere*)s)->c();
-//        double sr = ((Sphere*)s)->r();
-//        double cosAlphaMax = sqrt(1.0 - sr * sr / dot(x - sc, x - sc));
-//        double r1 = random();
-//        double r2 = random();
-//        double cosAlpha = 1.0 + r1 * (cosAlphaMax - 1);
-//        double sinAlpha = sqrt(1.0 - cosAlpha * cosAlpha);
-//        double phi = 2 * PI * r2;
-//        Vector3 a = (u * cos(phi)*sinAlpha +
-//                     v * sin(phi)*sinAlpha +
-//                     w * cosAlpha).norm();
-//        HitRecord temp;
-//        int index = -1;
-//        double t = 1e100;
-//        for (int j = 0; j < _shapeNum; ++j)
-//        {
-//            if (_shapes[j]->hitTest(Ray(x, a), temp))
-//            {
-//                if (temp.t < t)
-//                {
-//                    t = temp.t;
-//                    index = j;
-//                }
-//            }
-//        }
-//        if (index == i)
-//        {
-//            double omega = 2.0 * PI * (1 - cosAlphaMax);
-//            total = total + color * (s->emission() * dot(a, nl) * omega) / PI;
-//        }
-//    }
-//    return shape->emission() * emit + total + color * radiance(r, depth + 1, false);
     return shape->emission() + color * radiance(r, depth + 1);
 }
 
@@ -188,17 +140,18 @@ Color Radiance::idealRefraction(const Ray& ray, const HitRecord& record, Shape* 
     double a = nt - nc;
     double b = nt + nc;
     double R0 = a * a / (b * b);
-    double c = 1.0 + ddn;
+    double c = costheta;
     if (!into)
     {
-        c = 1.0 - dot(td, record.normal);
+        c = sqrt(1.0 - (nc * nc) / (nt * nt) * (1.0 - costheta2));
     }
+    c = 1.0 - c;
     double Rtheta = R0 + (1.0 - R0) * c * c * c * c * c;
     double k = 0.5;
     double P = k * 0.5 + (1.0 - k) * Rtheta;
     if (random() < P)
     {
-        return shape->emission() + color * Rtheta * radiance(r, depth + 1) / P;
+        return shape->emission() + color * Rtheta * radiance(r, depth + 1);// / P;
     }
-    return shape->emission() + color * (1.0 - Rtheta) * radiance(t, depth + 1) / (1.0 - P);
+    return shape->emission() + color * (1.0 - Rtheta) * radiance(t, depth + 1);// / (1.0 - P);
 }

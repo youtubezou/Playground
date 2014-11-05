@@ -78,6 +78,10 @@ void Scene::render(int maxRayNum)
             }
         }
         printf("\rRay: %d\tPercent: %.2f%%", maxRayNum, 100.0 * (x + 1) / _image->w());
+        if (x % 50 == 49)
+        {
+            _image->writePPM(name, 2.2);
+        }
     }
     delete[] color;
     _image->writePPM(name, 2.2);

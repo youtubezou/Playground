@@ -79,7 +79,7 @@ void SceneSmallpt::initCamera()
                          Vector3(0.0, -0.042612, -1.0).norm(),
                          Vector3(0.0, 1.0, 0.0),
                          1.0, 140.0,
-                         -50.0, -50.0, 50.0, 50.0);
+                         -66.0, -50.0, 66.0, 50.0);
 }
 
 void SceneSmallpt::initSample()
@@ -89,5 +89,5 @@ void SceneSmallpt::initSample()
 
 void SceneSmallpt::initImage()
 {
-    _image = new Image(500, 500);
+    _image = new Image(1024, 768);
 }
