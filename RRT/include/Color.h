@@ -95,12 +95,12 @@ inline Color operator*(const Color& a, const Color& b)
 
 inline Color operator*(const Color& a, double b)
 {
-    return Color(a.r() + b, a.g() + b, a.b() + b);
+    return Color(a.r() * b, a.g() * b, a.b() * b);
 }
 
 inline Color operator*(double a, const Color& b)
 {
-    return Color(a + b.r(), a + b.g(), a + b.b());
+    return Color(a * b.r(), a * b.g(), a * b.b());
 }
 
 inline Color operator/(const Color& a, const Color& b)

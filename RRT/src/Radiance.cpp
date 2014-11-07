@@ -44,15 +44,6 @@ Color Radiance::radiance(const Ray& ray, int depth, bool emit)
     {
         return shape->emission();
     }
-//    double p = max(max(color.r(), color.g()), color.b());
-//    if (depth >= 5)
-//    {
-//        if (depth >= 5000 || random() > p)
-//        {
-//            return shape->emission();
-//        }
-//        color = color * (1.0 / p);
-//    }
     if (depth >= 10)
     {
         return shape->emission();
@@ -147,11 +138,13 @@ Color Radiance::idealRefraction(const Ray& ray, const HitRecord& record, Shape* 
     }
     c = 1.0 - c;
     double Rtheta = R0 + (1.0 - R0) * c * c * c * c * c;
-    double k = 0.5;
-    double P = k * 0.5 + (1.0 - k) * Rtheta;
-    if (random() < P)
-    {
-        return shape->emission() + color * Rtheta * radiance(r, depth + 1);// / P;
-    }
-    return shape->emission() + color * (1.0 - Rtheta) * radiance(t, depth + 1);// / (1.0 - P);
+    //double k = 0.5;
+    //double P = k * 0.5 + (1.0 - k) * Rtheta;
+    return shape->emission() + color * (Rtheta * radiance(r, depth + 1) +
+                                        (1.0 - Rtheta) * radiance(t, depth + 1));
+//    if (random() < P)
+//    {
+//        return shape->emission() + color * Rtheta * radiance(r, depth + 1) / P;
+//    }
+//    return shape->emission() + color * (1.0 - Rtheta) * radiance(t, depth + 1) / (1.0 - P);
 }
