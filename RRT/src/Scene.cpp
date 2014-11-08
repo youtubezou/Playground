@@ -77,8 +77,8 @@ void Scene::render(int maxRayNum)
                 _image->set(x, y, _image->get(x, y) + color[i] / _sample->num());
             }
         }
-        printf("\rRay: %d\tPercent: %.2f%%", maxRayNum, 100.0 * (x + 1) / _image->w());
-        if (x % 50 == 49)
+        printf("\rRay: %d\tPercent: %.6f%%", maxRayNum, 100.0 * (x + 1) / _image->w());
+        if (x % 10 == 9)
         {
             _image->writePPM(name, 2.2);
         }
