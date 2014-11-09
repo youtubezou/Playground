@@ -1,6 +1,10 @@
 #ifndef SCENE_H
 #define SCENE_H
 
+#ifdef SYSTEM_WIN32
+#include <windows.h>
+#endif // SYSTEM_WIN32
+
 #include "Shape.h"
 #include "Camera.h"
 #include "Sample.h"
@@ -13,7 +17,7 @@ public:
     virtual ~Scene();
 
     void init();
-    void render(int maxRayNum = 1e9);
+    void render(int maxRayNum, int threadNum = 1);
 
 protected:
     virtual void initSceneName();
@@ -32,6 +36,16 @@ protected:
     Camera* _camera;
     Sample* _sample;
     Image* _image;
+
+    #ifdef SYSTEM_WIN32
+    int _rayNum;
+    bool* _occupy;
+    int _deltPixel;
+    HANDLE _deltMutex;
+
+    static DWORD WINAPI renderThreadEntry(LPVOID self);
+    void renderThread();
+    #endif // SYSTEM_WIN32
 };
 
 #endif // SCENE_H

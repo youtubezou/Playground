@@ -8,6 +8,6 @@ int main()
     srand(time(0));
     SceneCornellBox scene;
     scene.init();
-    scene.render(30000);
+    scene.render(100, 6);
     return 0;
 }

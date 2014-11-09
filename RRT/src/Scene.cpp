@@ -44,8 +44,101 @@ void Scene::init()
     initImage();
 }
 
-void Scene::render(int maxRayNum)
+#ifdef SYSTEM_WIN32
+DWORD WINAPI Scene::renderThreadEntry(LPVOID self)
 {
+    reinterpret_cast<Scene*>(self)->renderThread();
+    return 0;
+}
+
+void Scene::renderThread()
+{
+    Radiance rad(_shapes, _shapeNum, _background);
+    Color* color = new Color[_sample->num()];
+    while (true)
+    {
+        int x = -1;
+        WaitForSingleObject(_deltMutex, INFINITE);
+        for (int i = 0; i < _image->w(); ++i)
+        {
+            if (!_occupy[i])
+            {
+                _occupy[i] = true;
+                x = i;
+                break;
+            }
+        }
+        ReleaseMutex(_deltMutex);
+        if (x == -1)
+        {
+            break;
+        }
+        for (int y = 0; y < _image->h(); ++y)
+        {
+            for (int i = 0; i < _sample->num(); ++i)
+            {
+                color[i] = Color();
+            }
+            for (int r = 0; r < _rayNum; ++r)
+            {
+                _sample->resample();
+                for (int i = 0; i < _sample->num(); ++i)
+                {
+                    double a = (x + _sample->x(i)) / _image->w();
+                    double b = (y + _sample->y(i)) / _image->h();
+                    Ray ray = _camera->getRay(a, b, 0.0, 0.0);
+                    color[i] = color[i] + rad.radiance(ray, 0);
+                }
+            }
+            for (int i = 0; i < _sample->num(); ++i)
+            {
+                color[i] = color[i] / _rayNum;
+                color[i].clamp();
+                _image->set(x, y, _image->get(x, y) + color[i] / _sample->num());
+            }
+            WaitForSingleObject(_deltMutex, INFINITE);
+            ++_deltPixel;
+            ReleaseMutex(_deltMutex);
+        }
+    }
+    delete[] color;
+}
+#endif // SYSTEM_WIN32
+
+void Scene::render(int maxRayNum, int threadNum)
+{
+    #ifdef SYSTEM_WIN32
+    _rayNum = maxRayNum / _sample->num();
+    char name[128];
+    sprintf(name, "%s_%d.ppm", _name, maxRayNum);
+    _occupy = new bool[_image->w()];
+    for (int x = 0; x < _image->w(); ++x)
+    {
+        _occupy[x] = false;
+    }
+    _deltMutex = CreateMutex(NULL, FALSE, NULL);
+    for (int i = 0; i < threadNum; ++i)
+    {
+        CreateThread(0, 0, renderThreadEntry, this, 0, 0);
+    }
+    int totalPixel = _image->w() * _image->h();
+    _deltPixel = 0;
+    while (true)
+    {
+        printf("\rRay: %d\tPercent: %.6f%%", maxRayNum, 100.0 * _deltPixel / totalPixel);
+        Sleep(200);
+        if (_deltPixel == totalPixel)
+        {
+            break;
+        }
+        if (rand() < 10)
+        {
+            _image->writePPM(name, 2.2);
+        }
+    }
+    delete[] _occupy;
+    _image->writePPM(name, 2.2);
+    #else // SYSTEM_WIN32
     int rayNum = maxRayNum / _sample->num();
     char name[128];
     sprintf(name, "%s_%d.ppm", _name, maxRayNum);
@@ -85,6 +178,7 @@ void Scene::render(int maxRayNum)
     }
     delete[] color;
     _image->writePPM(name, 2.2);
+    #endif
 }
 
 void Scene::initSceneName()
