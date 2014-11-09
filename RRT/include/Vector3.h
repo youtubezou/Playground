@@ -13,6 +13,7 @@ public:
     double x() const;
     double y() const;
     double z() const;
+    double& operator[](int index);
     double operator[](int index) const;
 
     void setX(double x);
@@ -54,6 +55,11 @@ inline double Vector3::y() const
 inline double Vector3::z() const
 {
     return _d[2];
+}
+
+inline double& Vector3::operator[](int index)
+{
+    return _d[index];
 }
 
 inline double Vector3::operator[](int index) const

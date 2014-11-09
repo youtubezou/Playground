@@ -63,6 +63,7 @@
 		<Unit filename="include/Camera.h" />
 		<Unit filename="include/Color.h" />
 		<Unit filename="include/Image.h" />
+		<Unit filename="include/Matrix.h" />
 		<Unit filename="include/Parallelogram.h" />
 		<Unit filename="include/Radiance.h" />
 		<Unit filename="include/Ray.h" />
@@ -84,6 +85,7 @@
 		<Unit filename="src/Camera.cpp" />
 		<Unit filename="src/Color.cpp" />
 		<Unit filename="src/Image.cpp" />
+		<Unit filename="src/Matrix.cpp" />
 		<Unit filename="src/Parallelogram.cpp" />
 		<Unit filename="src/Radiance.cpp" />
 		<Unit filename="src/Ray.cpp" />
