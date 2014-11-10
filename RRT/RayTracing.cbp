@@ -77,6 +77,7 @@
 		<Unit filename="include/Texture.h" />
 		<Unit filename="include/TextureChess.h" />
 		<Unit filename="include/TextureColor.h" />
+		<Unit filename="include/Transformable.h" />
 		<Unit filename="include/Triangle.h" />
 		<Unit filename="include/TriangleMesh.h" />
 		<Unit filename="include/Vector2.h" />
@@ -99,6 +100,7 @@
 		<Unit filename="src/Texture.cpp" />
 		<Unit filename="src/TextureChess.cpp" />
 		<Unit filename="src/TextureColor.cpp" />
+		<Unit filename="src/Transformable.cpp" />
 		<Unit filename="src/Triangle.cpp" />
 		<Unit filename="src/TriangleMesh.cpp" />
 		<Unit filename="src/Vector2.cpp" />

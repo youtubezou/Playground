@@ -19,6 +19,7 @@ public:
     friend Vector3 operator*(const Matrix& a, const Vector3& b);
 
     friend Matrix inverse(Matrix a);
+    friend Matrix transpose(const Matrix& a);
 
     friend std::ostream& operator<<(std::ostream& out, const Matrix& mat);
 

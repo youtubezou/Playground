@@ -2,6 +2,7 @@
 #include "TextureColor.h"
 #include "Sphere.h"
 #include "Triangle.h"
+#include "Transformable.h"
 #include "SceneTest.h"
 
 SceneTest::SceneTest()
@@ -29,9 +30,13 @@ void SceneTest::initShapes()
 
     _shapeNum = 1;
     _shapes = new Shape*[1];
-    _shapes[0] = new Triangle(Vector3(-50, 0, -100.0),
-                              Vector3(0, 50, -100.0),
-                              Vector3(-30, -50, -100.0));
+    Sphere *sphere = new Sphere(Vector3(), 20);
+    _shapes[0] = new Transformable(sphere);
+    ((Transformable*)_shapes[0])->scale(1.0, 2.0, 3.0);
+    ((Transformable*)_shapes[0])->rotateX(0.3);
+    ((Transformable*)_shapes[0])->rotateY(0.6);
+    ((Transformable*)_shapes[0])->rotateZ(0.9);
+    ((Transformable*)_shapes[0])->translate(10, 20, -100);
     _shapes[0]->setTexture(new TextureColor(Color(0.5, 0.5, 0.9)));
     _shapes[0]->setMaterial(Material::DIFFUSE);
     _shapes[0]->setEmission(Color(0.5, 0.5, 0.9));

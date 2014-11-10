@@ -123,17 +123,33 @@ Matrix inverse(Matrix a)
     return inv;
 }
 
-ostream& operator<<(ostream& out, const Matrix& mat)
+Matrix transpose(const Matrix& a)
 {
-    out << setiosflags(ios::fixed);
+    Matrix b;
     for (int i = 0; i < 4; ++i)
     {
         for (int j = 0; j < 4; ++j)
         {
-            out << setprecision(4) << mat[i][j] << '\t';
+            b[i][j] = a[j][i];
+        }
+    }
+    return b;
+}
+
+ostream& operator<<(ostream& out, const Matrix& mat)
+{
+    ios init(nullptr);
+    init.copyfmt(out);
+    out << setiosflags(ios::fixed) << setiosflags(ios::right);
+    for (int i = 0; i < 4; ++i)
+    {
+        for (int j = 0; j < 4; ++j)
+        {
+            out << setprecision(3) << mat[i][j] << '\t';
         }
         out << endl;
     }
     out << endl;
+    out.copyfmt(init);
     return out;
 }
