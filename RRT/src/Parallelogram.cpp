@@ -4,7 +4,7 @@ Parallelogram::Parallelogram(const Vector3& a, const Vector3& b, const Vector3& 
     TriangleMesh(2)
 {
     (*this)[0] = Triangle(a, b, c);
-    (*this)[1] = Triangle(b, b + c - a, c);
+    (*this)[1] = Triangle(b + c - a, c, b);
 }
 
 Parallelogram::~Parallelogram()

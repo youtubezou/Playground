@@ -1,7 +1,8 @@
 #include "Triangle.h"
 
 Triangle::Triangle(const Vector3& a, const Vector3& b, const Vector3& c) :
-    _a(a), _b(b), _c(c), _n()
+    _a(a), _b(b), _c(c), _n(),
+    _uva(0.0, 0.0), _uvb(1.0, 0.0), _uvc(0.0, 1.0)
 {
     _n = cross(b - a, c - a).norm();
 }
@@ -55,7 +56,7 @@ bool Triangle::hitTest(const Ray& ray, HitRecord& record) const
     }
     record.point = ray.at(record.t);
     record.normal = _n;
-    // TODO: record.uv
+    record.uv = uva() + beta * (uvb() - uva()) + gamma * (uvc() - uva());
     record.texture = texture();
     return true;
 }
