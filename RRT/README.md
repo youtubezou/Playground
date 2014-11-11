@@ -10,3 +10,7 @@ The [Cornell Box](http://www.graphics.cornell.edu/online/box/) is the best known
 The rendered result of [smallpt](http://www.kevinbeason.com/smallpt/) with 30000 rays per pixel:
 
 ![smallpt_30000](https://cloud.githubusercontent.com/assets/853842/4976490/49ddc036-691f-11e4-83e3-0388cd06d7a1.png)
+
+Other results:
+
+![chess_30000](https://cloud.githubusercontent.com/assets/853842/4987204/894412fc-6947-11e4-871b-f9bae3fc0cfd.png)

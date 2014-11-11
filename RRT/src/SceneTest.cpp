@@ -153,5 +153,5 @@ void SceneTest::initSample()
 
 void SceneTest::initImage()
 {
-    _image = new Image(500, 500);
+    _image = new Image(512, 512);
 }

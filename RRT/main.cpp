@@ -12,6 +12,6 @@ int main()
     //SceneSmallpt scene;
     //SceneCornellBox scene;
     scene.init();
-    scene.render(30000, 4);
+    scene.render(30000, 7);
     return 0;
 }
