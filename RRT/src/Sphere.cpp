@@ -41,7 +41,7 @@ bool Sphere::hitTest(const Ray& ray, HitRecord& record) const
         phi += PI * 2.0;
     }
     double theta = acos(record.normal.y());
-    record.uv = Vector2(phi / (PI * 2.0), theta / PI);
+    record.uv = Vector2((PI * 2.0 - phi) / (PI * 2.0), theta / PI);
     record.texture = texture();
     return true;
 }

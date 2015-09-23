@@ -14,3 +14,5 @@ The rendered result of [smallpt](http://www.kevinbeason.com/smallpt/) with 30000
 Other results:
 
 ![chess_30000](https://cloud.githubusercontent.com/assets/853842/4987204/894412fc-6947-11e4-871b-f9bae3fc0cfd.png)
+
+![earth_30000](https://cloud.githubusercontent.com/assets/853842/4992767/651e81ca-69e0-11e4-8482-2a148a2296c4.png)
