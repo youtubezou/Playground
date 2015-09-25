@@ -14,7 +14,7 @@ int main()
     //SceneCornellBox scene;
     //SceneEarth scene;
     scene.init();
-    //scene.render(50, 4);
-    scene.render(30000, 8);
+    //scene.render(10, 4);
+    scene.render(30000, 16);
     return 0;
 }

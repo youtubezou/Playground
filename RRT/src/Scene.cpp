@@ -1,12 +1,15 @@
 #include <cstdio>
 #include <cstdlib>
+#include <algorithm>
 #include "Radiance.h"
 #include "Scene.h"
+using namespace std;
 
 Scene::Scene() :
     _name(nullptr), _background(),
     _shapeNum(0), _shapes(nullptr), _textureNum(0), _textures(nullptr),
-    _camera(nullptr), _sample(nullptr), _image(nullptr)
+    _camera(nullptr), _sample(nullptr), _image(nullptr),
+    _randomRow(nullptr), _randomCol(nullptr)
 {
 }
 
@@ -32,6 +35,8 @@ Scene::~Scene()
     delete _camera;
     delete _sample;
     delete _image;
+    delete _randomRow;
+    delete _randomCol;
 }
 
 void Scene::init()
@@ -42,6 +47,8 @@ void Scene::init()
     initCamera();
     initSample();
     initImage();
+    initRandomRow();
+    initRandomColumn();
 }
 
 #ifdef SYSTEM_WIN32
@@ -64,7 +71,7 @@ void Scene::renderThread()
             if (!_occupy[i])
             {
                 _occupy[i] = true;
-                x = i;
+                x = _randomCol[i];
                 break;
             }
         }
@@ -73,8 +80,9 @@ void Scene::renderThread()
         {
             break;
         }
-        for (int y = 0; y < _image->h(); ++y)
+        for (int j = 0; j < _image->h(); ++j)
         {
+            int y = _randomRow[j];
             for (int i = 0; i < _sample->num(); ++i)
             {
                 color[i] = Color();
@@ -107,6 +115,7 @@ void Scene::renderThread()
 
 void Scene::render(int maxRayNum, int threadNum)
 {
+    _beginTime = clock();
     #ifdef SYSTEM_WIN32
     _rayNum = maxRayNum / _sample->num();
     char name[128];
@@ -125,8 +134,13 @@ void Scene::render(int maxRayNum, int threadNum)
     _deltPixel = 0;
     while (true)
     {
-        printf("\rRay: %d\tPercent: %.6f%%", maxRayNum, 100.0 * _deltPixel / totalPixel);
-        Sleep(200);
+        system("cls");
+        printf("Ray: %d\n", maxRayNum);
+        printf("Progress: %d / %d\n", _deltPixel, totalPixel);
+        printf("Percent: %.6f%%\n", 100.0 * _deltPixel / totalPixel);
+        printRemainingTime();
+        putchar('\n');
+        Sleep(1000);
         if (_deltPixel == totalPixel)
         {
             break;
@@ -217,4 +231,69 @@ void Scene::initSample()
 void Scene::initImage()
 {
     _image = new Image(500, 500);
+}
+
+void Scene::initRandomRow()
+{
+    delete _randomRow;
+    _randomRow = new int[_image->h()];
+    for (int i = 0; i < _image->h(); ++i)
+    {
+        _randomRow[i] = i;
+        int j = rand() % (i + 1);
+        swap(_randomRow[i], _randomRow[j]);
+    }
+}
+
+void Scene::initRandomColumn()
+{
+    delete _randomCol;
+    _randomCol = new int[_image->w()];
+    for (int i = 0; i < _image->w(); ++i)
+    {
+        _randomCol[i] = i;
+        int j = rand() % (i + 1);
+        swap(_randomCol[i], _randomCol[j]);
+    }
+}
+
+inline void printWithPlural(int num, const char* unit) {
+    printf("%d ", num);
+    printf("%s", unit);
+    if (num > 1)
+    {
+        putchar('s');
+    }
+    putchar(' ');
+}
+
+void Scene::printRemainingTime()
+{
+    int totalPixel = _image->w() * _image->h();
+    int passedTime = (double)(clock() - _beginTime) / CLOCKS_PER_SEC;
+    int remainTime = (double)passedTime * totalPixel / _deltPixel - passedTime;
+    int day = remainTime / 86400;
+    int hour = remainTime % 86400 / 3600;
+    int minute = remainTime % 3600 / 60;
+    int sec = remainTime % 60;
+    if (remainTime > 0)
+    {
+        printf("Remain: ");
+    }
+    if (remainTime >= 86400)
+    {
+        printWithPlural(day, "day");
+    }
+    if (remainTime >= 3600)
+    {
+        printWithPlural(hour, "hr");
+    }
+    if (remainTime >= 60)
+    {
+        printWithPlural(minute, "min");
+    }
+    if (remainTime > 0)
+    {
+        printWithPlural(sec, "sec");
+    }
 }

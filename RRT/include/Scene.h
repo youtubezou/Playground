@@ -5,6 +5,7 @@
 #include <windows.h>
 #endif // SYSTEM_WIN32
 
+#include <ctime>
 #include "Shape.h"
 #include "Camera.h"
 #include "Sample.h"
@@ -36,6 +37,10 @@ protected:
     Camera* _camera;
     Sample* _sample;
     Image* _image;
+    int* _randomRow;
+    int* _randomCol;
+
+    clock_t _beginTime;
 
     #ifdef SYSTEM_WIN32
     int _rayNum;
@@ -46,6 +51,11 @@ protected:
     static DWORD WINAPI renderThreadEntry(LPVOID self);
     void renderThread();
     #endif // SYSTEM_WIN32
+
+private:
+    void initRandomRow();
+    void initRandomColumn();
+    void printRemainingTime();
 };
 
 #endif // SCENE_H
