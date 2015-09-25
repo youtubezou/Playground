@@ -1,6 +1,4 @@
 #include <cstdio>
-#include <cmath>
-#include <algorithm>
 #include "TextureColor.h"
 #include "TextureChess.h"
 #include "TextureImage.h"
@@ -8,31 +6,30 @@
 #include "Triangle.h"
 #include "Transformable.h"
 #include "Parallelogram.h"
-#include "SceneTest.h"
-using namespace std;
+#include "SceneEarth.h"
 
-SceneTest::SceneTest()
+SceneEarth::SceneEarth()
 {
 }
 
-SceneTest::~SceneTest()
+SceneEarth::~SceneEarth()
 {
 }
 
-void SceneTest::initSceneName()
+void SceneEarth::initSceneName()
 {
     _name = new char[8];
-    sprintf(_name, "%s", "test");
+    sprintf(_name, "%s", "earth");
 }
 
-void SceneTest::initBackground()
+void SceneEarth::initBackground()
 {
     _background = Color(0.0, 0.0, 0.0);
 }
 
-void SceneTest::initShapes()
+void SceneEarth::initShapes()
 {
-    int num = 25;
+    int num = 7;
 
     _textureNum = num;
     _textures = new Texture*[num];
@@ -78,37 +75,15 @@ void SceneTest::initShapes()
                                    Vector3(549.6, 0.0, 559.2));
     _shapes[5]->setTexture(_textures[5]);
 
-    const double DIAMETER = 98.0;
-    const double RADIUS = DIAMETER * 0.5;
-    const double CENTER_X = 549.6 * 0.5;
-    const double CENTER_Y = 548.8 * 0.5;
-    const double CENTER_Z = 559.2 * 0.5;
-    int idx = 6;
-    for (int h = 1; h <= 5; ++h)
-    {
-        int num = 3 - abs(h - 3);
-        double y = CENTER_Y - (h - 3) * sqrt(2.0) * 0.5 * DIAMETER;
-        double sx = CENTER_X - num * DIAMETER * 0.5;
-        double sz = CENTER_Z - num * DIAMETER * 0.5;
-        for (int i = 0; i < num; ++i)
-        {
-            for (int j = 0; j < num; ++j)
-            {
-                _textures[idx] = new TextureColor(Color(0.999 - idx * 0.0015, 0.999 - idx * 0.001, 0.899 + idx * 0.005));
-                double x = sx + i * DIAMETER + RADIUS;
-                double z = sz + j * DIAMETER + RADIUS;
-                _shapes[idx] = new Transformable(new Sphere(Vector3(x, y, z), RADIUS));
-                _shapes[idx]->setMaterial(Material::REFRACTION);
-                _shapes[idx]->setDielectric(1.5);
-                ((Transformable*)_shapes[idx])->rotateByPoint(4.0, 30.0, 2.0, {CENTER_X, CENTER_Y, CENTER_Z});
-                _shapes[idx]->setTexture(_textures[idx]);
-                ++idx;
-            }
-        }
-    }
+    _textures[6] = new TextureImage("earth.ppm");
+    _shapes[6] = new Transformable(new Sphere(Vector3(0.0, 0.0, 0.0), 150.0));
+    ((Transformable*)_shapes[6])->rotateY(180.0 / 180.0 * 3.14);
+    ((Transformable*)_shapes[6])->rotateZ(13.0 / 180.0 * 3.14);
+    ((Transformable*)_shapes[6])->translate(270, 270, 400);
+    _shapes[6]->setTexture(_textures[6]);
 }
 
-void SceneTest::initCamera()
+void SceneEarth::initCamera()
 {
     _camera = new Camera(Vector3(278, 273, -800),
                          Vector3(0, 0, 1),
@@ -117,12 +92,12 @@ void SceneTest::initCamera()
                          -270.0, -270.0, 270.0, 270.0);
 }
 
-void SceneTest::initSample()
+void SceneEarth::initSample()
 {
     _sample = new Sample(4, Sample::SampleType::JITTERED, Sample::FilterType::TENT);
 }
 
-void SceneTest::initImage()
+void SceneEarth::initImage()
 {
     _image = new Image(512, 512);
 }

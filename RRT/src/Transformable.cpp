@@ -12,6 +12,11 @@ Transformable::~Transformable()
     delete _shape;
 }
 
+void Transformable::translate(const Vector3 &v)
+{
+    this->translate(v.x(), v.y(), v.z());
+}
+
 void Transformable::translate(double x, double y, double z)
 {
     Matrix transMat = Matrix::UNIT();
@@ -20,6 +25,11 @@ void Transformable::translate(double x, double y, double z)
     transMat[2][3] = z;
     _world = transMat * _world;
     _invWorld = inverse(_world);
+}
+
+void Transformable::scale(const Vector3 &v)
+{
+    this->scale(v.x(), v.y(), v.z());
 }
 
 void Transformable::scale(double x, double y, double z)
@@ -65,6 +75,19 @@ void Transformable::rotateZ(double angle)
     _invWorld = inverse(_world);
 }
 
+void Transformable::rotate(double x, double y, double z)
+{
+    this->rotateX(x);
+    this->rotateY(y);
+    this->rotateZ(z);
+}
+
+void Transformable::rotateByPoint(double x, double y, double z, const Location &p)
+{
+    this->translate(-p);
+    this->rotate(x, y, z);
+    this->translate(p);
+}
 
 bool Transformable::hitTest(const Ray& ray, HitRecord& record) const
 {

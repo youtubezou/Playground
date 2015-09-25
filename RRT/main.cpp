@@ -4,6 +4,7 @@
 #include "SceneTest.h"
 #include "SceneSmallpt.h"
 #include "SceneCornellBox.h"
+#include "SceneEarth.h"
 
 int main()
 {
@@ -11,7 +12,9 @@ int main()
     SceneTest scene;
     //SceneSmallpt scene;
     //SceneCornellBox scene;
+    //SceneEarth scene;
     scene.init();
-    scene.render(30000, 7);
+    //scene.render(50, 4);
+    scene.render(30000, 8);
     return 0;
 }

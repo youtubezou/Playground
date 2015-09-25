@@ -70,6 +70,7 @@
 		<Unit filename="include/Sample.h" />
 		<Unit filename="include/Scene.h" />
 		<Unit filename="include/SceneCornellBox.h" />
+		<Unit filename="include/SceneEarth.h" />
 		<Unit filename="include/SceneSmallpt.h" />
 		<Unit filename="include/SceneTest.h" />
 		<Unit filename="include/Shape.h" />
@@ -94,6 +95,7 @@
 		<Unit filename="src/Sample.cpp" />
 		<Unit filename="src/Scene.cpp" />
 		<Unit filename="src/SceneCornellBox.cpp" />
+		<Unit filename="src/SceneEarth.cpp" />
 		<Unit filename="src/SceneSmallpt.cpp" />
 		<Unit filename="src/SceneTest.cpp" />
 		<Unit filename="src/Shape.cpp" />

@@ -6,12 +6,12 @@
 class Triangle : public Shape
 {
 public:
-    Triangle(const Vector3& a = Vector3(), const Vector3& b = Vector3(), const Vector3& c = Vector3());
+    Triangle(const Location& a = Location(), const Location& b = Location(), const Location& c = Location());
     virtual ~Triangle();
 
-    const Vector3& a() const;
-    const Vector3& b() const;
-    const Vector3& c() const;
+    const Location& a() const;
+    const Location& b() const;
+    const Location& c() const;
 
     const Vector2& uva() const;
     const Vector2& uvb() const;
@@ -23,21 +23,22 @@ public:
     virtual bool hitTest(const Ray& ray, HitRecord& record) const override;
 
 private:
-    Vector3 _a, _b, _c, _n;
+    Location _a, _b, _c;
+    Vector3 _n;
     Vector2 _uva, _uvb, _uvc;
 };
 
-inline const Vector3& Triangle::a() const
+inline const Location& Triangle::a() const
 {
     return _a;
 }
 
-inline const Vector3& Triangle::b() const
+inline const Location& Triangle::b() const
 {
     return _b;
 }
 
-inline const Vector3& Triangle::c() const
+inline const Location& Triangle::c() const
 {
     return _c;
 }

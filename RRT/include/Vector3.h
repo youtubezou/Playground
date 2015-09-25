@@ -42,6 +42,8 @@ private:
     double _d[3];
 };
 
+typedef Vector3 Location;
+
 inline double Vector3::x() const
 {
     return _d[0];

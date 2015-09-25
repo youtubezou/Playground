@@ -6,20 +6,20 @@
 class Sphere : public Shape
 {
 public:
-    Sphere(const Vector3& center, double radius);
+    Sphere(const Location& center, double radius);
     virtual ~Sphere();
 
-    const Vector3& c() const;
+    const Location& c() const;
     double r() const;
 
     virtual bool hitTest(const Ray& ray, HitRecord& record) const override;
 
 private:
-    Vector3 _c;
+    Location _c;
     double _r;
 };
 
-inline const Vector3& Sphere::c() const
+inline const Location& Sphere::c() const
 {
     return _c;
 }

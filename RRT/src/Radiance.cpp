@@ -1,3 +1,4 @@
+#include <cmath>
 #include <cstdlib>
 #include <algorithm>
 #include "Sphere.h"
@@ -137,14 +138,7 @@ Color Radiance::idealRefraction(const Ray& ray, const HitRecord& record, Shape* 
         c = sqrt(1.0 - (nc * nc) / (nt * nt) * (1.0 - costheta2));
     }
     c = 1.0 - c;
-    double Rtheta = R0 + (1.0 - R0) * c * c * c * c * c;
-    //double k = 0.5;
-    //double P = k * 0.5 + (1.0 - k) * Rtheta;
+    double Rtheta = R0 + (1.0 - R0) * pow(c, 5.0);
     return shape->emission() + color * (Rtheta * radiance(r, depth + 1) +
                                         (1.0 - Rtheta) * radiance(t, depth + 1));
-//    if (random() < P)
-//    {
-//        return shape->emission() + color * Rtheta * radiance(r, depth + 1) / P;
-//    }
-//    return shape->emission() + color * (1.0 - Rtheta) * radiance(t, depth + 1) / (1.0 - P);
 }
