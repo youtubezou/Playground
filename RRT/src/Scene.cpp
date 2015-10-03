@@ -47,8 +47,6 @@ void Scene::init()
     initCamera();
     initSample();
     initImage();
-    initRandomRow();
-    initRandomColumn();
 }
 
 #ifdef SYSTEM_WIN32
@@ -117,6 +115,8 @@ void Scene::render(int maxRayNum, int threadNum)
 {
     _beginTime = clock();
     #ifdef SYSTEM_WIN32
+    initRandomRow();
+    initRandomColumn();
     _rayNum = maxRayNum / _sample->num();
     char name[128];
     sprintf(name, "%s_%d.ppm", _name, maxRayNum);
@@ -230,13 +230,14 @@ void Scene::initSample()
 
 void Scene::initImage()
 {
-    _image = new Image(500, 500);
+    _image = new Image(512, 512);
 }
 
 void Scene::initRandomRow()
 {
     delete _randomRow;
     _randomRow = new int[_image->h()];
+    printf("%d\n", _image->h());
     for (int i = 0; i < _image->h(); ++i)
     {
         _randomRow[i] = i;
