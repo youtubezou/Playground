@@ -5,8 +5,7 @@ Camera::Camera(const Vector3& center, const Vector3& gaze, const Vector3& vup,
     _center(center), _gaze(gaze),
     _u(), _v(), _w(),
     _o(), _a(), _b(),
-    _radius(0.0)
-{
+    _radius(0.0) {
     _radius = aperture / 2.0;
     _w = - _gaze.norm();
     _u = cross(vup, _w).norm();
@@ -16,14 +15,9 @@ Camera::Camera(const Vector3& center, const Vector3& gaze, const Vector3& vup,
     _b = (v1 - v0) * _v;
 }
 
-Camera::~Camera()
-{
-}
-
-Ray Camera::getRay(double a, double b, double ra, double rb)
-{
+Ray Camera::getRay(double a, double b, double ra, double rb) {
     Vector3 origin = _center + 2.0 * (ra - 0.5) * _radius * _u +
-                               2.0 * (rb - 0.5) * _radius * _v;
+                     2.0 * (rb - 0.5) * _radius * _v;
     Vector3 target = _o + a * _a + b * _b;
     return Ray(origin, (target - origin).norm());
 }

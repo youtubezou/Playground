@@ -4,12 +4,11 @@
 #include <iostream>
 #include "Vector3.h"
 
-class Matrix
-{
+class Matrix {
 public:
-    Matrix();
+    constexpr Matrix();
 
-    const double* operator[](int index) const;
+    constexpr const double* operator[](int index);
     double* operator[](int index);
 
     static Matrix UNIT();
@@ -24,24 +23,23 @@ public:
     friend std::ostream& operator<<(std::ostream& out, const Matrix& mat);
 
 private:
-    double _data[4][4];
+    double _data[4][4] = {{0.0}};
 };
 
-inline const double* Matrix::operator[](int index) const
-{
+constexpr Matrix::Matrix() {
+}
+
+inline constexpr const double* Matrix::operator[](int index) {
     return _data[index];
 }
 
-inline double* Matrix::operator[](int index)
-{
+inline double* Matrix::operator[](int index) {
     return _data[index];
 }
 
-inline Matrix Matrix::UNIT()
-{
+inline Matrix Matrix::UNIT() {
     Matrix mat;
-    for (int i = 0; i < 4; ++i)
-    {
+    for (int i = 0; i < 4; ++i) {
         mat[i][i] = 1.0;
     }
     return mat;

@@ -2,17 +2,14 @@
 
 Triangle::Triangle(const Vector3& a, const Vector3& b, const Vector3& c) :
     _a(a), _b(b), _c(c), _n(),
-    _uva(0.0, 0.0), _uvb(1.0, 0.0), _uvc(0.0, 1.0)
-{
+    _uva(0.0, 0.0), _uvb(1.0, 0.0), _uvc(0.0, 1.0) {
     _n = cross(b - a, c - a).norm();
 }
 
-Triangle::~Triangle()
-{
+Triangle::~Triangle() {
 }
 
-bool Triangle::hitTest(const Ray& ray, HitRecord& record) const
-{
+bool Triangle::hitTest(const Ray& ray, HitRecord& record) const {
     double a = _a.x() - _b.x();
     double b = _a.y() - _b.y();
     double c = _a.z() - _b.z();
@@ -40,18 +37,15 @@ bool Triangle::hitTest(const Ray& ray, HitRecord& record) const
     double M = a * ei_hf + b * gf_di + c * dh_eg;
 
     double beta = (j * ei_hf + k * gf_di + l * dh_eg) / M;
-    if (beta < 0.0 || beta > 1.0)
-    {
+    if (beta < 0.0 || beta > 1.0) {
         return false;
     }
     double gamma = (i * ak_jb + h * jc_al + g * bl_kc) / M;
-    if (gamma < 0.0 || beta + gamma > 1.0)
-    {
+    if (gamma < 0.0 || beta + gamma > 1.0) {
         return false;
     }
     record.t = - (f * ak_jb + e * jc_al + d * bl_kc) / M;
-    if (record.t  < 1e-5)
-    {
+    if (record.t  < 1e-5) {
         return false;
     }
     record.point = ray.at(record.t);

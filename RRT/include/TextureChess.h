@@ -3,11 +3,9 @@
 
 #include "Texture.h"
 
-class TextureChess : public Texture
-{
+class TextureChess : public Texture {
 public:
     TextureChess(const Color& color1, const Color& color2, double period, double shift = 0.0);
-    virtual ~TextureChess();
 
     virtual Color getColor(const Vector2& uv) const override final;
 

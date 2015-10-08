@@ -6,8 +6,7 @@
 #include "Texture.h"
 #include "Ray.h"
 
-enum class Material
-{
+enum class Material {
     DIFFUSE, // Ideal diffuse reflection.
     SPECULAR, // Ideal specular reflection.
     REFRACTION, // Ideal dielectric refraction.
@@ -15,8 +14,7 @@ enum class Material
 
 class Shape;
 
-struct HitRecord
-{
+struct HitRecord {
     double t;
     Vector3 point;
     Vector3 normal;
@@ -24,8 +22,7 @@ struct HitRecord
     Texture* texture;
 };
 
-class Shape
-{
+class Shape {
 public:
     Shape();
     virtual ~Shape();

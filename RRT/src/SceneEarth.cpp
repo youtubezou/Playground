@@ -8,27 +8,22 @@
 #include "Parallelogram.h"
 #include "SceneEarth.h"
 
-SceneEarth::SceneEarth()
-{
+SceneEarth::SceneEarth() {
 }
 
-SceneEarth::~SceneEarth()
-{
+SceneEarth::~SceneEarth() {
 }
 
-void SceneEarth::initSceneName()
-{
+void SceneEarth::initSceneName() {
     _name = new char[8];
     sprintf(_name, "%s", "earth");
 }
 
-void SceneEarth::initBackground()
-{
+void SceneEarth::initBackground() {
     _background = Color(0.0, 0.0, 0.0);
 }
 
-void SceneEarth::initShapes()
-{
+void SceneEarth::initShapes() {
     int num = 7;
 
     _textureNum = num;
@@ -83,8 +78,7 @@ void SceneEarth::initShapes()
     _shapes[6]->setTexture(_textures[6]);
 }
 
-void SceneEarth::initCamera()
-{
+void SceneEarth::initCamera() {
     _camera = new Camera(Vector3(278, 273, -800),
                          Vector3(0, 0, 1),
                          Vector3(0, 1, 0),
@@ -92,12 +86,10 @@ void SceneEarth::initCamera()
                          -270.0, -270.0, 270.0, 270.0);
 }
 
-void SceneEarth::initSample()
-{
+void SceneEarth::initSample() {
     _sample = new Sample(4, Sample::SampleType::JITTERED, Sample::FilterType::TENT);
 }
 
-void SceneEarth::initImage()
-{
+void SceneEarth::initImage() {
     _image = new Image(512, 512);
 }

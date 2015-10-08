@@ -4,8 +4,7 @@
 #include "Vector2.h"
 #include "Color.h"
 
-class Texture
-{
+class Texture {
 public:
     Texture();
     virtual ~Texture();

@@ -11,27 +11,22 @@
 #include "SceneTest.h"
 using namespace std;
 
-SceneTest::SceneTest()
-{
+SceneTest::SceneTest() {
 }
 
-SceneTest::~SceneTest()
-{
+SceneTest::~SceneTest() {
 }
 
-void SceneTest::initSceneName()
-{
+void SceneTest::initSceneName() {
     _name = new char[8];
     sprintf(_name, "%s", "test");
 }
 
-void SceneTest::initBackground()
-{
+void SceneTest::initBackground() {
     _background = Color(0.0, 0.0, 0.0);
 }
 
-void SceneTest::initShapes()
-{
+void SceneTest::initShapes() {
     int num = 25;
 
     _textureNum = num;
@@ -84,16 +79,13 @@ void SceneTest::initShapes()
     const double CENTER_Y = 548.8 * 0.5;
     const double CENTER_Z = 559.2 * 0.5;
     int idx = 6;
-    for (int h = 1; h <= 5; ++h)
-    {
+    for (int h = 1; h <= 5; ++h) {
         int num = 3 - abs(h - 3);
         double y = CENTER_Y - (h - 3) * sqrt(2.0) * 0.5 * DIAMETER;
         double sx = CENTER_X - num * DIAMETER * 0.5;
         double sz = CENTER_Z - num * DIAMETER * 0.5;
-        for (int i = 0; i < num; ++i)
-        {
-            for (int j = 0; j < num; ++j)
-            {
+        for (int i = 0; i < num; ++i) {
+            for (int j = 0; j < num; ++j) {
                 _textures[idx] = new TextureColor(Color(0.999 - idx * 0.0015, 0.999 - idx * 0.001, 0.899 + idx * 0.005));
                 double x = sx + i * DIAMETER + RADIUS;
                 double z = sz + j * DIAMETER + RADIUS;
@@ -108,8 +100,7 @@ void SceneTest::initShapes()
     }
 }
 
-void SceneTest::initCamera()
-{
+void SceneTest::initCamera() {
     _camera = new Camera(Vector3(278, 273, -800),
                          Vector3(0, 0, 1),
                          Vector3(0, 1, 0),
@@ -117,12 +108,10 @@ void SceneTest::initCamera()
                          -270.0, -270.0, 270.0, 270.0);
 }
 
-void SceneTest::initSample()
-{
+void SceneTest::initSample() {
     _sample = new Sample(4, Sample::SampleType::JITTERED, Sample::FilterType::TENT);
 }
 
-void SceneTest::initImage()
-{
+void SceneTest::initImage() {
     _image = new Image(512, 512);
 }

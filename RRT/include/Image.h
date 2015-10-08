@@ -3,8 +3,7 @@
 
 #include "Color.h"
 
-class Image
-{
+class Image {
 public:
     Image();
     Image(int width, int height);
@@ -26,23 +25,19 @@ private:
     Color** _d;
 };
 
-inline int Image::w() const
-{
+inline int Image::w() const {
     return _w;
 }
 
-inline int Image::h() const
-{
+inline int Image::h() const {
     return _h;
 }
 
-inline const Color& Image::get(int x, int y) const
-{
+inline const Color& Image::get(int x, int y) const {
     return _d[x][y];
 }
 
-inline void Image::set(int x, int y, const Color& color)
-{
+inline void Image::set(int x, int y, const Color& color) {
     _d[x][y] = color;
 }
 

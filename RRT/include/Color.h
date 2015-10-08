@@ -3,16 +3,14 @@
 
 #include <iostream>
 
-class Color
-{
+class Color {
 public:
-    Color(double r = 0.0, double g = 0.0, double b = 0.0);
-    virtual ~Color();
+    constexpr Color(double r = 0.0, double g = 0.0, double b = 0.0);
 
-    double r() const;
-    double g() const;
-    double b() const;
-    double operator[](int index) const;
+    constexpr double r();
+    constexpr double g();
+    constexpr double b();
+    constexpr double operator[](int index);
 
     void setR(double r);
     void setG(double g);
@@ -27,7 +25,7 @@ public:
     friend Color operator/(const Color& a, const Color& b);
     friend Color operator/(const Color& a, double b);
 
-    double clamp(double value) const;
+    constexpr double clamp(double value);
     void clamp();
 
     friend std::ostream& operator<<(std::ostream& out, const Color& vec);
@@ -36,98 +34,77 @@ private:
     double _d[3];
 };
 
-inline double Color::r() const
-{
+constexpr Color::Color(double r, double g, double b) :
+    _d{r, g, b} {
+}
+
+inline constexpr double Color::r() {
     return _d[0];
 }
 
-inline double Color::g() const
-{
+inline constexpr double Color::g() {
     return _d[1];
 }
 
-inline double Color::b() const
-{
+inline constexpr double Color::b() {
     return _d[2];
 }
 
-inline double Color::operator[](int index) const
-{
+inline constexpr double Color::operator[](int index) {
     return _d[index];
 }
 
-inline void Color::setR(double r)
-{
+inline void Color::setR(double r) {
     _d[0] = r;
 }
 
-inline void Color::setG(double g)
-{
+inline void Color::setG(double g) {
     _d[1] = g;
 }
 
-inline void Color::setB(double b)
-{
+inline void Color::setB(double b) {
     _d[2] = b;
 }
 
-inline void Color::set(double r, double g, double b)
-{
+inline void Color::set(double r, double g, double b) {
     setR(r);
     setG(g);
     setB(b);
 }
 
-inline Color operator+(const Color& a, const Color& b)
-{
+inline Color operator+(const Color& a, const Color& b) {
     return Color(a.r() + b.r(), a.g() + b.g(), a.b() + b.b());
 }
 
-inline Color operator-(const Color& a, const Color& b)
-{
+inline Color operator-(const Color& a, const Color& b) {
     return Color(a.r() - b.r(), a.g() - b.g(), a.b() - b.b());
 }
 
-inline Color operator*(const Color& a, const Color& b)
-{
+inline Color operator*(const Color& a, const Color& b) {
     return Color(a.r() * b.r(), a.g() * b.g(), a.b() * b.b());
 }
 
-inline Color operator*(const Color& a, double b)
-{
+inline Color operator*(const Color& a, double b) {
     return Color(a.r() * b, a.g() * b, a.b() * b);
 }
 
-inline Color operator*(double a, const Color& b)
-{
+inline Color operator*(double a, const Color& b) {
     return Color(a * b.r(), a * b.g(), a * b.b());
 }
 
-inline Color operator/(const Color& a, const Color& b)
-{
+inline Color operator/(const Color& a, const Color& b) {
     return Color(a.r() / b.r(), a.g() / b.g(), a.b() / b.b());
 }
 
-inline Color operator/(const Color& a, double b)
-{
+inline Color operator/(const Color& a, double b) {
     return Color(a.r() / b, a.g() / b, a.b() / b);
 }
 
-inline double Color::clamp(double value) const
-{
-    if (value < 0.0)
-    {
-        return 0.0;
-    }
-    if (value > 1.0)
-    {
-        return 1.0;
-    }
-    return value;
+inline constexpr double Color::clamp(double value) {
+    return (value < 0.0) ? 0.0 : ((value > 1.0 ? 1.0 : value));
 }
 
-inline void Color::clamp()
-{
+inline void Color::clamp() {
     setR(clamp(r()));
     setG(clamp(g()));
     setB(clamp(b()));

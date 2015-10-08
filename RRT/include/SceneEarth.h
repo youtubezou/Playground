@@ -3,8 +3,7 @@
 
 #include "Scene.h"
 
-class SceneEarth : public Scene
-{
+class SceneEarth : public Scene {
 public:
     SceneEarth();
     virtual ~SceneEarth();

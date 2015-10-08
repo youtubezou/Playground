@@ -3,8 +3,7 @@
 
 #include "Shape.h"
 
-class Triangle : public Shape
-{
+class Triangle : public Shape {
 public:
     Triangle(const Location& a = Location(), const Location& b = Location(), const Location& c = Location());
     virtual ~Triangle();
@@ -28,48 +27,39 @@ private:
     Vector2 _uva, _uvb, _uvc;
 };
 
-inline const Location& Triangle::a() const
-{
+inline const Location& Triangle::a() const {
     return _a;
 }
 
-inline const Location& Triangle::b() const
-{
+inline const Location& Triangle::b() const {
     return _b;
 }
 
-inline const Location& Triangle::c() const
-{
+inline const Location& Triangle::c() const {
     return _c;
 }
 
-inline const Vector2& Triangle::uva() const
-{
+inline const Vector2& Triangle::uva() const {
     return _uva;
 }
 
-inline const Vector2& Triangle::uvb() const
-{
+inline const Vector2& Triangle::uvb() const {
     return _uvb;
 }
 
-inline const Vector2& Triangle::uvc() const
-{
+inline const Vector2& Triangle::uvc() const {
     return _uvc;
 }
 
-inline void Triangle::setUva(const Vector2& uv)
-{
+inline void Triangle::setUva(const Vector2& uv) {
     _uva = uv;
 }
 
-inline void Triangle::setUvb(const Vector2& uv)
-{
+inline void Triangle::setUvb(const Vector2& uv) {
     _uvb = uv;
 }
 
-inline void Triangle::setUvc(const Vector2& uv)
-{
+inline void Triangle::setUvc(const Vector2& uv) {
     _uvc = uv;
 }
 

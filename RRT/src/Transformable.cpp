@@ -1,24 +1,20 @@
 #include "Transformable.h"
 
 Transformable::Transformable(Shape* shape) :
-    _shape(shape), _world(), _invWorld()
-{
+    _shape(shape), _world(), _invWorld() {
     _world = Matrix::UNIT();
     _invWorld = Matrix::UNIT();
 }
 
-Transformable::~Transformable()
-{
+Transformable::~Transformable() {
     delete _shape;
 }
 
-void Transformable::translate(const Vector3 &v)
-{
+void Transformable::translate(const Vector3 &v) {
     this->translate(v.x(), v.y(), v.z());
 }
 
-void Transformable::translate(double x, double y, double z)
-{
+void Transformable::translate(double x, double y, double z) {
     Matrix transMat = Matrix::UNIT();
     transMat[0][3] = x;
     transMat[1][3] = y;
@@ -27,13 +23,11 @@ void Transformable::translate(double x, double y, double z)
     _invWorld = inverse(_world);
 }
 
-void Transformable::scale(const Vector3 &v)
-{
+void Transformable::scale(const Vector3 &v) {
     this->scale(v.x(), v.y(), v.z());
 }
 
-void Transformable::scale(double x, double y, double z)
-{
+void Transformable::scale(double x, double y, double z) {
     Matrix scaleMat = Matrix::UNIT();
     scaleMat[0][0] = x;
     scaleMat[1][1] = y;
@@ -42,8 +36,7 @@ void Transformable::scale(double x, double y, double z)
     _invWorld = inverse(_world);
 }
 
-void Transformable::rotateX(double angle)
-{
+void Transformable::rotateX(double angle) {
     Matrix rotateMat = Matrix::UNIT();
     rotateMat[1][1] = cos(angle);
     rotateMat[1][2] = -sin(angle);
@@ -53,8 +46,7 @@ void Transformable::rotateX(double angle)
     _invWorld = inverse(_world);
 }
 
-void Transformable::rotateY(double angle)
-{
+void Transformable::rotateY(double angle) {
     Matrix rotateMat = Matrix::UNIT();
     rotateMat[0][0] = cos(angle);
     rotateMat[0][2] = sin(angle);
@@ -64,8 +56,7 @@ void Transformable::rotateY(double angle)
     _invWorld = inverse(_world);
 }
 
-void Transformable::rotateZ(double angle)
-{
+void Transformable::rotateZ(double angle) {
     Matrix rotateMat = Matrix::UNIT();
     rotateMat[0][0] = cos(angle);
     rotateMat[0][1] = -sin(angle);
@@ -75,31 +66,26 @@ void Transformable::rotateZ(double angle)
     _invWorld = inverse(_world);
 }
 
-void Transformable::rotate(double x, double y, double z)
-{
+void Transformable::rotate(double x, double y, double z) {
     this->rotateX(x);
     this->rotateY(y);
     this->rotateZ(z);
 }
 
-void Transformable::rotateByPoint(double x, double y, double z, const Location &p)
-{
+void Transformable::rotateByPoint(double x, double y, double z, const Location &p) {
     this->translate(-p);
     this->rotate(x, y, z);
     this->translate(p);
 }
 
-bool Transformable::hitTest(const Ray& ray, HitRecord& record) const
-{
+bool Transformable::hitTest(const Ray& ray, HitRecord& record) const {
     Vector3 no = _invWorld * ray.o();
     Vector3 nd = _invWorld * ray.d();
-    for (int i = 0; i < 3; ++i)
-    {
+    for (int i = 0; i < 3; ++i) {
         nd[i] -= _invWorld[i][3];
     }
     Ray newRay(no, nd);
-    if (_shape->hitTest(newRay, record))
-    {
+    if (_shape->hitTest(newRay, record)) {
         record.point = _world * record.point;
         record.normal = transpose(_invWorld) * record.normal;
         record.texture = texture();

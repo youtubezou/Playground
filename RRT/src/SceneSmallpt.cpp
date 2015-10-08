@@ -3,27 +3,22 @@
 #include "TextureColor.h"
 #include "SceneSmallpt.h"
 
-SceneSmallpt::SceneSmallpt()
-{
+SceneSmallpt::SceneSmallpt() {
 }
 
-SceneSmallpt::~SceneSmallpt()
-{
+SceneSmallpt::~SceneSmallpt() {
 }
 
-void SceneSmallpt::initSceneName()
-{
+void SceneSmallpt::initSceneName() {
     _name = new char[8];
     sprintf(_name, "%s", "smallpt");
 }
 
-void SceneSmallpt::initBackground()
-{
+void SceneSmallpt::initBackground() {
     _background = Color(0.0, 0.0, 0.0);
 }
 
-void SceneSmallpt::initShapes()
-{
+void SceneSmallpt::initShapes() {
     _textureNum = 5;
     _textures = new Texture*[5];
     _textures[0] = new TextureColor(Color(0.75, 0.25, 0.25));
@@ -73,8 +68,7 @@ void SceneSmallpt::initShapes()
     _shapes[8]->setDielectric(1.5);
 }
 
-void SceneSmallpt::initCamera()
-{
+void SceneSmallpt::initCamera() {
     _camera = new Camera(Vector3(50.0, 52.0, 295.6f),
                          Vector3(0.0, -0.042612, -1.0).norm(),
                          Vector3(0.0, 1.0, 0.0),
@@ -82,12 +76,10 @@ void SceneSmallpt::initCamera()
                          -66.0, -50.0, 66.0, 50.0);
 }
 
-void SceneSmallpt::initSample()
-{
+void SceneSmallpt::initSample() {
     _sample = new Sample(4, Sample::SampleType::JITTERED, Sample::FilterType::TENT);
 }
 
-void SceneSmallpt::initImage()
-{
+void SceneSmallpt::initImage() {
     _image = new Image(1024, 768);
 }

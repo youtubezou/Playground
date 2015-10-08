@@ -4,17 +4,15 @@
 #include <iostream>
 #include "Vector3.h"
 
-class Ray
-{
+class Ray {
 public:
-    Ray();
-    Ray(const Vector3& origin, const Vector3& direction);
-    virtual ~Ray();
+    constexpr Ray();
+    constexpr Ray(const Vector3& origin, const Vector3& direction);
 
-    const Vector3& o() const;
-    const Vector3& d() const;
+    constexpr const Vector3& o();
+    constexpr const Vector3& d();
 
-    Vector3 at(double t) const;
+    constexpr Vector3 at(double t) const;
 
     friend std::ostream& operator<<(std::ostream& out, const Ray& ray);
 
@@ -23,14 +21,23 @@ private:
     Vector3 _d; // Direction
 };
 
-inline const Vector3& Ray::o() const
-{
+constexpr Ray::Ray() : _o(), _d() {
+}
+
+constexpr Ray::Ray(const Vector3& origin, const Vector3& direction) :
+    _o(origin), _d(direction) {
+}
+
+inline constexpr const Vector3& Ray::o() {
     return _o;
 }
 
-inline const Vector3& Ray::d() const
-{
+inline constexpr const Vector3& Ray::d() {
     return _d;
+}
+
+constexpr Vector3 Ray::at(double t) {
+    return o() + t * d();
 }
 
 #endif // RAY_H

@@ -3,11 +3,9 @@
 
 #include "Shape.h"
 
-class Sphere : public Shape
-{
+class Sphere : public Shape {
 public:
     Sphere(const Location& center, double radius);
-    virtual ~Sphere();
 
     const Location& c() const;
     double r() const;
@@ -19,13 +17,11 @@ private:
     double _r;
 };
 
-inline const Location& Sphere::c() const
-{
+inline const Location& Sphere::c() const {
     return _c;
 }
 
-inline double Sphere::r() const
-{
+inline double Sphere::r() const {
     return _r;
 }
 

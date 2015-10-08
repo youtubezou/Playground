@@ -3,11 +3,9 @@
 
 #include "Texture.h"
 
-class TextureColor : public Texture
-{
+class TextureColor : public Texture {
 public:
     TextureColor(const Color& color);
-    virtual ~TextureColor();
 
     virtual Color getColor(const Vector2& uv) const override final;
 

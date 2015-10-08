@@ -3,8 +3,7 @@
 
 #include "Scene.h"
 
-class SceneSmallpt : public Scene
-{
+class SceneSmallpt : public Scene {
 public:
     SceneSmallpt();
     virtual ~SceneSmallpt();

@@ -3,8 +3,7 @@
 
 #include "Scene.h"
 
-class SceneCornellBox : public Scene
-{
+class SceneCornellBox : public Scene {
 public:
     SceneCornellBox();
     virtual ~SceneCornellBox();

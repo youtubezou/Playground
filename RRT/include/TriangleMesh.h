@@ -4,8 +4,7 @@
 #include "Shape.h"
 #include "Triangle.h"
 
-class TriangleMesh : public Shape
-{
+class TriangleMesh : public Shape {
 public:
     TriangleMesh(int num);
     virtual ~TriangleMesh();
@@ -21,18 +20,15 @@ private:
     Triangle* _triangles;
 };
 
-inline int TriangleMesh::num() const
-{
+inline int TriangleMesh::num() const {
     return _num;
 }
 
-inline Triangle& TriangleMesh::operator[](int index)
-{
+inline Triangle& TriangleMesh::operator[](int index) {
     return _triangles[index];
 }
 
-inline const Triangle& TriangleMesh::operator[](int index) const
-{
+inline const Triangle& TriangleMesh::operator[](int index) const {
     return _triangles[index];
 }
 

@@ -3,8 +3,7 @@
 
 #include "Scene.h"
 
-class SceneTest : public Scene
-{
+class SceneTest : public Scene {
 public:
     SceneTest();
     virtual ~SceneTest();

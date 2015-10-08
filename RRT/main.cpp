@@ -6,8 +6,7 @@
 #include "SceneCornellBox.h"
 #include "SceneEarth.h"
 
-int main()
-{
+int main() {
     srand(time(0));
     SceneTest scene;
     //SceneSmallpt scene;

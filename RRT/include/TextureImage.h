@@ -4,11 +4,9 @@
 #include "Texture.h"
 #include "Image.h"
 
-class TextureImage : public Texture
-{
+class TextureImage : public Texture {
 public:
     TextureImage(const char* fileName);
-    virtual ~TextureImage();
 
     virtual Color getColor(const Vector2& uv) const override final;
 

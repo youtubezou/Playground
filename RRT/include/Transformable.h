@@ -6,8 +6,7 @@
 
 class Matrix;
 
-class Transformable : public Shape
-{
+class Transformable : public Shape {
 public:
     Transformable(Shape* shape);
     virtual ~Transformable();

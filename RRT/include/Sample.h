@@ -3,16 +3,13 @@
 
 #include "Vector2.h"
 
-class Sample
-{
+class Sample {
 public:
-    enum class SampleType
-    {
+    enum class SampleType {
         RANDOM,
         JITTERED,
     };
-    enum class FilterType
-    {
+    enum class FilterType {
         BOX,
         TENT,
     };
@@ -39,18 +36,15 @@ private:
     void tentFilter();
 };
 
-inline double Sample::x(int index) const
-{
+inline double Sample::x(int index) const {
     return _samples[index].x();
 }
 
-inline double Sample::y(int index) const
-{
+inline double Sample::y(int index) const {
     return _samples[index].y();
 }
 
-inline int Sample::num() const
-{
+inline int Sample::num() const {
     return _num;
 }
 

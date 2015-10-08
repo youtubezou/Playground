@@ -3,8 +3,7 @@
 
 #include "Shape.h"
 
-class Radiance
-{
+class Radiance {
 public:
     Radiance(Shape** shapes, int n, const Color& background);
     virtual ~Radiance();

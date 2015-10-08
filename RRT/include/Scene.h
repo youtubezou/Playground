@@ -11,8 +11,7 @@
 #include "Sample.h"
 #include "Image.h"
 
-class Scene
-{
+class Scene {
 public:
     Scene();
     virtual ~Scene();
@@ -28,21 +27,21 @@ protected:
     virtual void initSample();
     virtual void initImage();
 
-    char* _name;
-    Color _background;
-    int _shapeNum;
-    Shape** _shapes;
-    int _textureNum;
-    Texture** _textures;
-    Camera* _camera;
-    Sample* _sample;
-    Image* _image;
-    int* _randomRow;
-    int* _randomCol;
+    char* _name = nullptr;
+    Color _background = {};
+    int _shapeNum = 0;
+    Shape** _shapes = nullptr;
+    int _textureNum = 0;
+    Texture** _textures = nullptr;
+    Camera* _camera = nullptr;
+    Sample* _sample = nullptr;
+    Image* _image = nullptr;
+    int* _randomRow = nullptr;
+    int* _randomCol = nullptr;
 
     clock_t _beginTime;
 
-    #ifdef SYSTEM_WIN32
+#ifdef SYSTEM_WIN32
     int _rayNum;
     bool* _occupy;
     int _deltPixel;
@@ -50,7 +49,7 @@ protected:
 
     static DWORD WINAPI renderThreadEntry(LPVOID self);
     void renderThread();
-    #endif // SYSTEM_WIN32
+#endif // SYSTEM_WIN32
 
 private:
     void initRandomRow();
