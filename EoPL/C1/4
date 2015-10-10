@@ -1,8 +1,0 @@
-<expression> ::= <identifier>
-             ::= (lambda (<identifier>) <expression>)
-             ::= (<expression> <expression>)
-
-1. <identifier> has same number of left and right parentheses, which are all 0.
-2. Let L, R be the numbers of left and right parentheses in <expression>, respectively.
-   The number of parentheses in (lambda (<identifier>) <expression>) is L + 2 and R + 2, L + 2 = R + 2;
-   The number of parentheses in (<expression> <expression>) is L + 1 and R + 1, L + 1 = R + 1.
