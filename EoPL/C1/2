@@ -1,0 +1,23 @@
+<data>         ::= <datum> | <datum> <data>
+<list>         ::= () | (<data>)
+<dotted-datum> ::= (<data> . <datum>)
+<vector>       ::= #() | #(<data>)
+<datum>        ::= <number> | <symbol> | <boolean> | <string>
+               ::= <list> | <dotted-datum> | <vector>
+
+   <list>
+=> (<data>)
+=> (<datum> <data>)
+=> (<datum> <datum> <data>)
+=> (<datum> <datum> <datum>)
+=> (<boolean> <datum> <datum>)
+=> (#t <datum> <datum>)
+=> (#t <dotted-datum> <datum>)
+=> (#t (<data> . <datum>) <datum>)
+=> (#t (<datum> . <datum>) <datum>)
+=> (#t (<symbol> . <datum>) <datum>)
+=> (#t (foo . <datum>) <datum>)
+=> (#t (foo . <list>) <datum>)
+=> (#t (foo . ()) <datum>)
+=> (#t (foo . ()) <number>)
+=> (#t (foo . ()) 3)
