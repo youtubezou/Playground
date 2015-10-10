@@ -6,7 +6,7 @@ Try to solve the exercises in __Essentials of Programming Languages__ _(3rd Edit
 
 No.|           Chapter Name             |Exercises
 :-:|:-----------------------------------|:--------:
- 1 | Inductive Sets of Data             | [ ] 0/36
+ 1 | Inductive Sets of Data             | [ ] 6/36
  2 | Data Abstraction                   | [ ] 0/31
  3 | Expressions                        | [ ] 0/44
  4 | State                              | [ ] 0/42
