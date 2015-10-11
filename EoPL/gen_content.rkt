@@ -6,7 +6,7 @@
       (let ((file-name (string-append (car file-path-strings)
                                       "."
                                       (cadr file-path-strings))))
-        (string-append "* ["
+        (string-append "["
                        file-name
                        "](./"
                        dir-path
@@ -16,11 +16,11 @@
 
 (define (deal-files-rev dir-path file-list col-num)
   (if (null? file-list)
-      (if (equal? col-num 5)
+      (if (equal? col-num 10)
           "\n"
           (string-append "|-"
                          (deal-files-rev dir-path file-list (+ col-num 1))))
-      (if (equal? col-num 5)
+      (if (equal? col-num 10)
           (string-append "\n"
                          (deal-files-rev dir-path file-list 0))
           (let ((curr-link (deal-file dir-path (car file-list)))
@@ -33,8 +33,8 @@
                                next-rev))))))
 
 (define (deal-files dir-path file-list)
-  (string-append "-|-|-|-|-\n"
-                 ":-:|:-:|:-:|:-:|:-:\n"
+  (string-append " - | - | - | - | - | - | - | - | - | - \n"
+                 ":-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:\n"
                  (deal-files-rev dir-path file-list 0)
                  "\n"))
 
