@@ -18,7 +18,7 @@
   (if (null? file-list)
       (if (equal? col-num 10)
           "\n"
-          (string-append "|-"
+          (string-append "| "
                          (deal-files-rev dir-path file-list (+ col-num 1))))
       (if (equal? col-num 10)
           (string-append "\n"
@@ -33,7 +33,7 @@
                                next-rev))))))
 
 (define (deal-files dir-path file-list)
-  (string-append " - | - | - | - | - | - | - | - | - | - \n"
+  (string-append "   |   |   |   |   |   |   |   |   |   \n"
                  ":-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:\n"
                  (deal-files-rev dir-path file-list 0)
                  "\n"))
