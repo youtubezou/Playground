@@ -8,7 +8,7 @@ No.|           Chapter Name             |Exercises
 :-:|:-----------------------------------|:--------:
  1 | Inductive Sets of Data             | [*] 36/36
  2 | Data Abstraction                   | [*] 31/31
- 3 | Expressions                        | [ ] 18/44
+ 3 | Expressions                        | [ ] 29/44
  4 | State                              | [ ] 0/42
  5 | Continuation-Passing Interpreters  | [ ] 0/58
  6 | Continuation-Passing Style         | [ ] 0/40
@@ -21,6 +21,7 @@ No.|           Chapter Name             |Exercises
 The codes are interpreted with [Dr. Racket](http://racket-lang.org/), the language is "_Teaching Languages_" -> "_Advanced Student_".
 
 ## Contents
+
 ### Chapter 1 Inductive Sets of Data
 
    |   |   |   |   |   |   |   |   |   
@@ -44,4 +45,5 @@ The codes are interpreted with [Dr. Racket](http://racket-lang.org/), the langua
    |   |   |   |   |   |   |   |   |   
 :-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
 [3.01](./C3_Expressions/3.01.md) | [3.02](./C3_Expressions/3.02.md) | [3.03](./C3_Expressions/3.03.md) | [3.04](./C3_Expressions/3.04.md) | [3.05](./C3_Expressions/3.05.md) | [3.06](./C3_Expressions/3.06.scm) | [3.07](./C3_Expressions/3.07.scm) | [3.08](./C3_Expressions/3.08.scm) | [3.09](./C3_Expressions/3.09.scm) | [3.10](./C3_Expressions/3.10.scm)
-[3.11](./C3_Expressions/3.11.scm) | [3.12](./C3_Expressions/3.12.scm) | [3.13](./C3_Expressions/3.13.scm) | [3.14](./C3_Expressions/3.14.scm) | [3.15](./C3_Expressions/3.15.scm) | [3.16](./C3_Expressions/3.16.scm) | [3.17](./C3_Expressions/3.17.scm) | [3.18](./C3_Expressions/3.18.scm)| | 
+[3.11](./C3_Expressions/3.11.scm) | [3.12](./C3_Expressions/3.12.scm) | [3.13](./C3_Expressions/3.13.scm) | [3.14](./C3_Expressions/3.14.scm) | [3.15](./C3_Expressions/3.15.scm) | [3.16](./C3_Expressions/3.16.scm) | [3.17](./C3_Expressions/3.17.scm) | [3.18](./C3_Expressions/3.18.scm) | [3.19](./C3_Expressions/3.19.scm) | [3.20](./C3_Expressions/3.20.scm)
+[3.21](./C3_Expressions/3.21.scm) | [3.22](./C3_Expressions/3.22.scm) | [3.23](./C3_Expressions/3.23.scm) | [3.24](./C3_Expressions/3.24.scm) | [3.25](./C3_Expressions/3.25.scm) | [3.26](./C3_Expressions/3.26.scm) | [3.27](./C3_Expressions/3.27.scm) | [3.28](./C3_Expressions/3.28.scm) | [3.29](./C3_Expressions/3.29.scm)| 
