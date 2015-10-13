@@ -8,7 +8,7 @@ No.|           Chapter Name             |Exercises
 :-:|:-----------------------------------|:--------:
  1 | Inductive Sets of Data             | [*] 36/36
  2 | Data Abstraction                   | [*] 31/31
- 3 | Expressions                        | [ ] 0/44
+ 3 | Expressions                        | [ ] 18/44
  4 | State                              | [ ] 0/42
  5 | Continuation-Passing Interpreters  | [ ] 0/58
  6 | Continuation-Passing Style         | [ ] 0/40
@@ -21,7 +21,6 @@ No.|           Chapter Name             |Exercises
 The codes are interpreted with [Dr. Racket](http://racket-lang.org/), the language is "_Teaching Languages_" -> "_Advanced Student_".
 
 ## Contents
-
 ### Chapter 1 Inductive Sets of Data
 
    |   |   |   |   |   |   |   |   |   
@@ -39,3 +38,10 @@ The codes are interpreted with [Dr. Racket](http://racket-lang.org/), the langua
 [2.11](./C2_Data_Abstraction/2.11.scm) | [2.12](./C2_Data_Abstraction/2.12.scm) | [2.13](./C2_Data_Abstraction/2.13.scm) | [2.14](./C2_Data_Abstraction/2.14.scm) | [2.15](./C2_Data_Abstraction/2.15.scm) | [2.16](./C2_Data_Abstraction/2.16.scm) | [2.17](./C2_Data_Abstraction/2.17.scm) | [2.18](./C2_Data_Abstraction/2.18.scm) | [2.19](./C2_Data_Abstraction/2.19.scm) | [2.20](./C2_Data_Abstraction/2.20.scm)
 [2.21](./C2_Data_Abstraction/2.21.scm) | [2.22](./C2_Data_Abstraction/2.22.scm) | [2.23](./C2_Data_Abstraction/2.23.scm) | [2.24](./C2_Data_Abstraction/2.24.scm) | [2.25](./C2_Data_Abstraction/2.25.scm) | [2.26](./C2_Data_Abstraction/2.26.scm) | [2.27](./C2_Data_Abstraction/2.27.md) | [2.28](./C2_Data_Abstraction/2.28.scm) | [2.29](./C2_Data_Abstraction/2.29.scm) | [2.30](./C2_Data_Abstraction/2.30.scm)
 [2.31](./C2_Data_Abstraction/2.31.scm)| | | | | | | | | 
+
+### Chapter 3 Expressions
+
+   |   |   |   |   |   |   |   |   |   
+:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
+[3.01](./C3_Expressions/3.01.md) | [3.02](./C3_Expressions/3.02.md) | [3.03](./C3_Expressions/3.03.md) | [3.04](./C3_Expressions/3.04.md) | [3.05](./C3_Expressions/3.05.md) | [3.06](./C3_Expressions/3.06.scm) | [3.07](./C3_Expressions/3.07.scm) | [3.08](./C3_Expressions/3.08.scm) | [3.09](./C3_Expressions/3.09.scm) | [3.10](./C3_Expressions/3.10.scm)
+[3.11](./C3_Expressions/3.11.scm) | [3.12](./C3_Expressions/3.12.scm) | [3.13](./C3_Expressions/3.13.scm) | [3.14](./C3_Expressions/3.14.scm) | [3.15](./C3_Expressions/3.15.scm) | [3.16](./C3_Expressions/3.16.scm) | [3.17](./C3_Expressions/3.17.scm) | [3.18](./C3_Expressions/3.18.scm)| | 
