@@ -8,7 +8,7 @@ No.|           Chapter Name             |Exercises
 :-:|:-----------------------------------|:--------:
  1 | Inductive Sets of Data             | [*] 36/36
  2 | Data Abstraction                   | [*] 31/31
- 3 | Expressions                        | [ ] 41/44
+ 3 | Expressions                        | [*] 44/44
  4 | State                              | [ ] 0/42
  5 | Continuation-Passing Interpreters  | [ ] 0/58
  6 | Continuation-Passing Style         | [ ] 0/40
@@ -48,4 +48,4 @@ The codes are interpreted with [Dr. Racket](http://racket-lang.org/), the langua
 [3.11](./C3_Expressions/3.11.scm) | [3.12](./C3_Expressions/3.12.scm) | [3.13](./C3_Expressions/3.13.scm) | [3.14](./C3_Expressions/3.14.scm) | [3.15](./C3_Expressions/3.15.scm) | [3.16](./C3_Expressions/3.16.scm) | [3.17](./C3_Expressions/3.17.scm) | [3.18](./C3_Expressions/3.18.scm) | [3.19](./C3_Expressions/3.19.scm) | [3.20](./C3_Expressions/3.20.scm)
 [3.21](./C3_Expressions/3.21.scm) | [3.22](./C3_Expressions/3.22.scm) | [3.23](./C3_Expressions/3.23.scm) | [3.24](./C3_Expressions/3.24.scm) | [3.25](./C3_Expressions/3.25.scm) | [3.26](./C3_Expressions/3.26.scm) | [3.27](./C3_Expressions/3.27.scm) | [3.28](./C3_Expressions/3.28.scm) | [3.29](./C3_Expressions/3.29.scm) | [3.30](./C3_Expressions/3.30.md)
 [3.31](./C3_Expressions/3.31.scm) | [3.32](./C3_Expressions/3.32.scm) | [3.33](./C3_Expressions/3.33.scm) | [3.34](./C3_Expressions/3.34.md) | [3.35](./C3_Expressions/3.35.scm) | [3.36](./C3_Expressions/3.36.scm) | [3.37](./C3_Expressions/3.37.scm) | [3.38](./C3_Expressions/3.38.scm) | [3.39](./C3_Expressions/3.39.scm) | [3.40](./C3_Expressions/3.40.scm)
-[3.41](./C3_Expressions/3.41.scm)| | | | | | | | | 
+[3.41](./C3_Expressions/3.41.scm) | [3.42](./C3_Expressions/3.42.scm) | [3.43](./C3_Expressions/3.43.scm) | [3.44](./C3_Expressions/3.44.scm)| | | | | | 
