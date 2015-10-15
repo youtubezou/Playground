@@ -18,7 +18,7 @@ No.|           Chapter Name             |Exercises
  
 ## Run
 
-The codes are interpreted with [Dr. Racket](http://racket-lang.org/), the language is "_Teaching Languages_" -> "_Advanced Student_".
+The codes are interpreted with [DrRacket](http://racket-lang.org/), the language is "_Teaching Languages_" -> "_Advanced Student_".
 
 ## Contents
 
