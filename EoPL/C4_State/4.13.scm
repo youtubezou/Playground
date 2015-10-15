@@ -193,7 +193,10 @@
     (expression ("emptylist") emptylist-exp)
     (expression ("unpack" (arbno identifier) "=" expression "in" expression) unpack-exp)
     (expression ("let" (arbno identifier "=" expression) "in" expression) let-exp)
+    (expression ("let*" (arbno identifier "=" expression) "in" expression) let*-exp)
     (expression ("proc" "(" (arbno identifier) ")" expression) proc-exp)
+    (expression ("letproc" (arbno identifier "(" (arbno identifier) ")" "=" expression)
+                 "in" expression) letproc-exp)
     (expression ("letrec" (arbno identifier "(" (arbno identifier) ")" "=" expression )
                  "in" expression) letrec-exp)
     (expression ("newref" "(" expression ")") newref-exp)
@@ -268,11 +271,20 @@
    (vars (list-of identifier?))
    (exps (list-of expression?))
    (body expression?))
+  (let*-exp
+   (vars (list-of identifier?))
+   (exps (list-of expression?))
+   (body expression?))
   (nameless-let-exp
    (exps (list-of expression?))
    (body expression?))
   (proc-exp
    (vars (list-of identifier?))
+   (body expression?))
+  (letproc-exp
+   (names (list-of identifier?))
+   (varss (list-of (list-of identifier?)))
+   (exps (list-of expression?))
    (body expression?))
   (letrec-exp
    (names (list-of identifier?))
@@ -305,6 +317,12 @@
   (call-exp
    (rator expression?)
    (rands (list-of expression?))))
+
+(define (map-of-two func lst1 lst2)
+  (if (or (null? lst1) (null? lst2))
+      '()
+      (cons (func (car lst1) (car lst2))
+            (map-of-two func (cdr lst1) (cdr lst2)))))
 
 (define translation-of
   (lambda (exp senv)
@@ -366,8 +384,21 @@
         (let-exp (vars exps body)
                  (nameless-let-exp (map trans-list exps)
                                    (translation-of body (extend-senv vars senv))))
+        (let*-exp (vars exps body)
+                  (if (null? vars)
+                      (translation-of body senv)
+                      (translation-of (let-exp (list (car vars))
+                                               (list (car exps))
+                                               (let*-exp (cdr vars)
+                                                         (cdr exps)
+                                                         body)) senv)))
         (proc-exp (vars body)
                   (nameless-proc-exp (translation-of body (extend-senv vars senv))))
+        (letproc-exp (names varss exps body)
+                     (translation-of (let-exp names
+                                              (map-of-two (lambda (vars exp)
+                                                            (proc-exp vars exp)) varss exps)
+                                              body) senv))
         (letrec-exp (names varss exps body)
                     (let ((named-env (extend-senv-letrec names senv)))
                       (define (letrec-exp-rec varss exps)
@@ -649,8 +680,16 @@
 (define program-let "let a = 1 b = 2 in list(a b)")
 (equal?! program-let '(1 2))
 
+(define program-let* "let* a = 1 b = a in list(a b)")
+(equal?! program-let* '(1 1))
+
 (define program-proc "let f = proc(a b) -(a, b) in (f 3 1)")
 (equal?! program-proc 2)
+
+(define program-letproc "letproc f(n) = -(n, 1)
+                                 g(n) = +(n, 1)
+                         in list((f 0) (g 0))")
+(equal?! program-letproc '(-1 1))
 
 (define program-letrec-s "letrec fact(n) = if zero?(n) then 1 else *(n, (fact -(n, 1)))
                           in (fact 10)")
@@ -790,3 +829,9 @@
                                   c = deref(a)
                               in list(b c deref(a))")
 (equal?! program-state-let '(1 1 1))
+
+(define program-state-let* "let a = newref(0)
+                            in let* b = setref(a, 1)
+                                    c = +(b, setref(a, 2))
+                               in list(deref(a) b c)")
+(equal?! program-state-let* '(2 1 3))
