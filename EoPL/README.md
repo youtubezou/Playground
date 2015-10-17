@@ -9,7 +9,7 @@ No.|           Chapter Name             |Exercises
  1 | Inductive Sets of Data             | [*] 36/36
  2 | Data Abstraction                   | [*] 31/31
  3 | Expressions                        | [*] 44/44
- 4 | State                              | [ ] 30/42
+ 4 | State                              | [*] 42/42
  5 | Continuation-Passing Interpreters  | [ ] 0/58
  6 | Continuation-Passing Style         | [ ] 0/40
  7 | Types                              | [ ] 0/30
@@ -32,6 +32,7 @@ The codes are interpreted with [DrRacket](http://racket-lang.org/), the language
   * [IMPLICIT-REFS (Expression)](./C4_State/4.21.scm)
   * [IMPLICIT-REFS (Statement)](./C4_State/4.27.scm)
   * [MUTABLE-PAIRS](./C4_State/4.30.scm)
+  * [CALL-BY-REFERENCE](./C4_State/4.35.scm)
 
 ## Contents
 
@@ -70,3 +71,5 @@ The codes are interpreted with [DrRacket](http://racket-lang.org/), the language
 [4.01](./C4_State/4.01.md) | [4.02](./C4_State/4.02.md) | [4.03](./C4_State/4.03.md) | [4.04](./C4_State/4.04.md) | [4.05](./C4_State/4.05.md) | [4.06](./C4_State/4.06.md) | [4.07](./C4_State/4.07.md) | [4.08](./C4_State/4.08.scm) | [4.09](./C4_State/4.09.scm) | [4.10](./C4_State/4.10.scm)
 [4.11](./C4_State/4.11.scm) | [4.12](./C4_State/4.12.scm) | [4.13](./C4_State/4.13.scm) | [4.14](./C4_State/4.14.md) | [4.15](./C4_State/4.15.md) | [4.16](./C4_State/4.16.md) | [4.17](./C4_State/4.17.scm) | [4.18](./C4_State/4.18.scm) | [4.19](./C4_State/4.19.scm) | [4.20](./C4_State/4.20.scm)
 [4.21](./C4_State/4.21.scm) | [4.22](./C4_State/4.22.scm) | [4.23](./C4_State/4.23.scm) | [4.24](./C4_State/4.24.scm) | [4.25](./C4_State/4.25.scm) | [4.26](./C4_State/4.26.scm) | [4.27](./C4_State/4.27.scm) | [4.28](./C4_State/4.28.md) | [4.29](./C4_State/4.29.scm) | [4.30](./C4_State/4.30.scm)
+[4.31](./C4_State/4.31.md) | [4.32](./C4_State/4.32.scm) | [4.33](./C4_State/4.33.scm) | [4.34](./C4_State/4.34.scm) | [4.35](./C4_State/4.35.scm) | [4.36](./C4_State/4.36.scm) | [4.37](./C4_State/4.37.scm) | [4.38](./C4_State/4.38.md) | [4.39](./C4_State/4.39.md) | [4.40](./C4_State/4.40.scm)
+[4.41](./C4_State/4.41.md) | [4.42](./C4_State/4.42.scm)| | | | | | | | 
