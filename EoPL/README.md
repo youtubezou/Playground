@@ -1,6 +1,6 @@
 # Essentials
 
-Try to solve the exercises in __Essentials of Programming Languages__ _(3rd Edition)_.
+Try to solve the exercises in [__Essentials of Programming Languages__](http://www.eopl3.com/) _(3rd Edition)_.
 
 ## Progress
 
@@ -10,7 +10,7 @@ No.|           Chapter Name             |Exercises
  2 | Data Abstraction                   | [*] 31/31
  3 | Expressions                        | [*] 44/44
  4 | State                              | [*] 42/42
- 5 | Continuation-Passing Interpreters  | [ ] 0/58
+ 5 | Continuation-Passing Interpreters  | [ ] 16/58
  6 | Continuation-Passing Style         | [ ] 0/40
  7 | Types                              | [ ] 0/30
  8 | Module                             | [ ] 0/27
@@ -33,6 +33,12 @@ The codes are interpreted with [DrRacket](http://racket-lang.org/), the language
   * [IMPLICIT-REFS (Statement)](./C4_State/4.27.scm)
   * [MUTABLE-PAIRS](./C4_State/4.30.scm)
   * [CALL-BY-REFERENCE](./C4_State/4.35.scm)
+* Continuation-Passing Interpreters
+  * [Continuation-Passing](./C5_Continuation-Passing_Interpreters/5.16.scm)
+  * [Trampolined]()
+  * [Imperative]()
+  * [Exceptions]()
+  * [Threads]()
 
 ## Contents
 
@@ -73,3 +79,10 @@ The codes are interpreted with [DrRacket](http://racket-lang.org/), the language
 [4.21](./C4_State/4.21.scm) | [4.22](./C4_State/4.22.scm) | [4.23](./C4_State/4.23.scm) | [4.24](./C4_State/4.24.scm) | [4.25](./C4_State/4.25.scm) | [4.26](./C4_State/4.26.scm) | [4.27](./C4_State/4.27.scm) | [4.28](./C4_State/4.28.md) | [4.29](./C4_State/4.29.scm) | [4.30](./C4_State/4.30.scm)
 [4.31](./C4_State/4.31.md) | [4.32](./C4_State/4.32.scm) | [4.33](./C4_State/4.33.scm) | [4.34](./C4_State/4.34.scm) | [4.35](./C4_State/4.35.scm) | [4.36](./C4_State/4.36.scm) | [4.37](./C4_State/4.37.scm) | [4.38](./C4_State/4.38.md) | [4.39](./C4_State/4.39.md) | [4.40](./C4_State/4.40.scm)
 [4.41](./C4_State/4.41.md) | [4.42](./C4_State/4.42.scm)| | | | | | | | 
+
+### Chapter 5 Continuation-Passing Interpreters
+
+   |   |   |   |   |   |   |   |   |   
+:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
+[5.01](./C5_Continuation-Passing_Interpreters/5.01.scm) | [5.02](./C5_Continuation-Passing_Interpreters/5.02.scm) | [5.03](./C5_Continuation-Passing_Interpreters/5.03.scm) | [5.04](./C5_Continuation-Passing_Interpreters/5.04.scm) | [5.05](./C5_Continuation-Passing_Interpreters/5.05.scm) | [5.06](./C5_Continuation-Passing_Interpreters/5.06.scm) | [5.07](./C5_Continuation-Passing_Interpreters/5.07.scm) | [5.08](./C5_Continuation-Passing_Interpreters/5.08.scm) | [5.09](./C5_Continuation-Passing_Interpreters/5.09.scm) | [5.10](./C5_Continuation-Passing_Interpreters/5.10.scm)
+[5.11](./C5_Continuation-Passing_Interpreters/5.11.scm) | [5.12](./C5_Continuation-Passing_Interpreters/5.12.scm) | [5.13](./C5_Continuation-Passing_Interpreters/5.13.scm) | [5.14](./C5_Continuation-Passing_Interpreters/5.14.scm) | [5.15](./C5_Continuation-Passing_Interpreters/5.15.scm) | [5.16](./C5_Continuation-Passing_Interpreters/5.16.scm)| | | | 
