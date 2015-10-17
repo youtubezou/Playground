@@ -18,7 +18,12 @@
 (define (value-of-program pgm)
   (cases program pgm
     (a-program (exp)
-               (result-of/k exp (empty-env) (end-cont)))))
+               (trampoline (result-of/k exp (empty-env) (end-cont))))))
+
+(define (trampoline bounce)
+  (if (expval? bounce)
+      bounce
+      (trampoline (bounce))))
 
 (define (run prog)
   (initialize-store!)
@@ -464,11 +469,12 @@
               (saved-env environment?)))
 
 (define (apply-procedure/k proc1 vals cont)
-  (cases proc proc1
-    (procedure (vars body saved-env)
-               (value-of/k body (extend-env-vals vars vals saved-env) cont))
-    (subroutine (vars body saved-env)
-                (result-of/k body (extend-env-vals vars vals saved-env) cont))))
+  (lambda ()
+    (cases proc proc1
+      (procedure (vars body saved-env)
+                 (value-of/k body (extend-env-vals vars vals saved-env) cont))
+      (subroutine (vars body saved-env)
+                  (result-of/k body (extend-env-vals vars vals saved-env) cont)))))
 
 ; BEGIN: Evaluation
 (define (value-of/k exp env cont)

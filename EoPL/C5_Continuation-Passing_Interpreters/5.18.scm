@@ -18,11 +18,22 @@
 (define (value-of-program pgm)
   (cases program pgm
     (a-program (exp)
-               (result-of/k exp (empty-env) (end-cont)))))
+               (trampoline (result-of/k exp (empty-env) (end-cont))))))
 
 (define (run prog)
   (initialize-store!)
   (value-of-program (scan&parse prog)))
+
+; BEGIN: Bounce
+(define-datatype bounce bounce?
+  (inter-bounce (proc procedure?)))
+
+(define (trampoline b)
+  (if (expval? b)
+      b
+      (cases bounce b
+        (inter-bounce (proc)
+                      (trampoline (proc))))))
 
 ; BEGIN: Value type
 (define (identifier? x)
@@ -464,11 +475,12 @@
               (saved-env environment?)))
 
 (define (apply-procedure/k proc1 vals cont)
-  (cases proc proc1
-    (procedure (vars body saved-env)
-               (value-of/k body (extend-env-vals vars vals saved-env) cont))
-    (subroutine (vars body saved-env)
-                (result-of/k body (extend-env-vals vars vals saved-env) cont))))
+  (inter-bounce (lambda ()
+                  (cases proc proc1
+                    (procedure (vars body saved-env)
+                               (value-of/k body (extend-env-vals vars vals saved-env) cont))
+                    (subroutine (vars body saved-env)
+                                (result-of/k body (extend-env-vals vars vals saved-env) cont))))))
 
 ; BEGIN: Evaluation
 (define (value-of/k exp env cont)
@@ -567,24 +579,6 @@
   (display "Actual: \n")
   (run prog)
   (display "\n"))
-
-(define program-print "print -(4, 1)")
-(test program-print 3)
-
-(define program-seq "{print 1; print 2}")
-(test program-seq '(1 2))
-
-(define program-if "if zero?(0) print 1 print 2")
-(test program-if 1)
-
-(define program-var "var a, b; { a = 5; b = 1; print -(a, b)}")
-(test program-var 4)
-
-(define program-while "var a; { a = 3; while greater?(a, 0) {print a; a = -(a, 1)}}")
-(test program-while '(3 2 1))
-
-(define program-dowhile "var a; { a = 1; do print a while zero?(a) }")
-(test program-dowhile 1)
 
 (define program-sub "
 var x;
