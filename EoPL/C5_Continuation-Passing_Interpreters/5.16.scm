@@ -418,7 +418,7 @@
                           (apply-cont saved-cont val)))
     (begin-cont (exps env saved-cont)
                 (if (null? exps)
-                    val
+                    (apply-cont saved-cont val)
                     (value-of/k (car exps) env (begin-cont (cdr exps) env saved-cont))))
     (rator-cont (rands env saved-cont)
                 (if (null? rands)
