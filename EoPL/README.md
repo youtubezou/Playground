@@ -2,20 +2,6 @@
 
 Try to solve the exercises in [__Essentials of Programming Languages__](http://www.eopl3.com/) _(3rd Edition)_.
 
-## Progress
-
-No.|           Chapter Name             |Exercises
-:-:|:-----------------------------------|:--------:
- 1 | Inductive Sets of Data             | [*] 36/36
- 2 | Data Abstraction                   | [*] 31/31
- 3 | Expressions                        | [*] 44/44
- 4 | State                              | [*] 42/42
- 5 | Continuation-Passing Interpreters  | [ ] 33/58
- 6 | Continuation-Passing Style         | [ ] 0/40
- 7 | Types                              | [ ] 0/30
- 8 | Module                             | [ ] 0/27
- 9 | Objects and Classes                | [ ] 0/42
- 
 ## Run
 
 The codes are interpreted with [DrRacket](http://racket-lang.org/), the language is "_Teaching Languages_" -> "_Advanced Student_".
@@ -37,7 +23,7 @@ The codes are interpreted with [DrRacket](http://racket-lang.org/), the language
   * [Continuation-Passing](./C5_Continuation-Passing_Interpreters/5.16.scm)
   * [Trampolined](./C5_Continuation-Passing_Interpreters/5.20.scm)
   * [Imperative](./C5_Continuation-Passing_Interpreters/5.29.scm)
-  * [Exceptions]()
+  * [Exceptions](./C5_Continuation-Passing_Interpreters/5.42.scm)
   * [Threads]()
 
 ## Contents
@@ -87,4 +73,5 @@ The codes are interpreted with [DrRacket](http://racket-lang.org/), the language
 [5.01](./C5_Continuation-Passing_Interpreters/5.01.scm) | [5.02](./C5_Continuation-Passing_Interpreters/5.02.scm) | [5.03](./C5_Continuation-Passing_Interpreters/5.03.scm) | [5.04](./C5_Continuation-Passing_Interpreters/5.04.scm) | [5.05](./C5_Continuation-Passing_Interpreters/5.05.scm) | [5.06](./C5_Continuation-Passing_Interpreters/5.06.scm) | [5.07](./C5_Continuation-Passing_Interpreters/5.07.scm) | [5.08](./C5_Continuation-Passing_Interpreters/5.08.scm) | [5.09](./C5_Continuation-Passing_Interpreters/5.09.scm) | [5.10](./C5_Continuation-Passing_Interpreters/5.10.scm)
 [5.11](./C5_Continuation-Passing_Interpreters/5.11.scm) | [5.12](./C5_Continuation-Passing_Interpreters/5.12.scm) | [5.13](./C5_Continuation-Passing_Interpreters/5.13.scm) | [5.14](./C5_Continuation-Passing_Interpreters/5.14.scm) | [5.15](./C5_Continuation-Passing_Interpreters/5.15.scm) | [5.16](./C5_Continuation-Passing_Interpreters/5.16.scm) | [5.17](./C5_Continuation-Passing_Interpreters/5.17.scm) | [5.18](./C5_Continuation-Passing_Interpreters/5.18.scm) | [5.19](./C5_Continuation-Passing_Interpreters/5.19.scm) | [5.20](./C5_Continuation-Passing_Interpreters/5.20.scm)
 [5.21](./C5_Continuation-Passing_Interpreters/5.21.md) | [5.22](./C5_Continuation-Passing_Interpreters/5.22.md) | [5.23](./C5_Continuation-Passing_Interpreters/5.23.md) | [5.24](./C5_Continuation-Passing_Interpreters/5.24.md) | [5.25](./C5_Continuation-Passing_Interpreters/5.25.scm) | [5.26](./C5_Continuation-Passing_Interpreters/5.26.scm) | [5.27](./C5_Continuation-Passing_Interpreters/5.27.md) | [5.28](./C5_Continuation-Passing_Interpreters/5.28.scm) | [5.29](./C5_Continuation-Passing_Interpreters/5.29.scm) | [5.30](./C5_Continuation-Passing_Interpreters/5.30.scm)
-[5.31](./C5_Continuation-Passing_Interpreters/5.31.scm) | [5.32](./C5_Continuation-Passing_Interpreters/5.32.scm) | [5.33](./C5_Continuation-Passing_Interpreters/5.33.scm)| | | | | | | 
+[5.31](./C5_Continuation-Passing_Interpreters/5.31.scm) | [5.32](./C5_Continuation-Passing_Interpreters/5.32.scm) | [5.33](./C5_Continuation-Passing_Interpreters/5.33.scm) | [5.34](./C5_Continuation-Passing_Interpreters/5.34.scm) | [5.35](./C5_Continuation-Passing_Interpreters/5.35.scm) | [5.36](./C5_Continuation-Passing_Interpreters/5.36.scm) | [5.37](./C5_Continuation-Passing_Interpreters/5.37.scm) | [5.38](./C5_Continuation-Passing_Interpreters/5.38.scm) | [5.39](./C5_Continuation-Passing_Interpreters/5.39.md) | [5.40](./C5_Continuation-Passing_Interpreters/5.40.md)
+[5.41](./C5_Continuation-Passing_Interpreters/5.41.md) | [5.42](./C5_Continuation-Passing_Interpreters/5.42.scm) | [5.43](./C5_Continuation-Passing_Interpreters/5.43.scm) | [5.44](./C5_Continuation-Passing_Interpreters/5.44.scm)| | | | | | 
