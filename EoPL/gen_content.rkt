@@ -33,8 +33,8 @@
                                next-rev))))))
 
 (define (deal-files dir-path file-list)
-  (string-append "   |   |   |   |   |   |   |   |   |   \n"
-                 ":-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:\n"
+  (string-append "   |   |   |   |   |   |   |   |   |   |   \n"
+                 ":-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:\n"
                  (deal-files-rev dir-path file-list 0)
                  "\n"))
 
