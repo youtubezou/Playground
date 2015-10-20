@@ -26,7 +26,8 @@ The codes are interpreted with [DrRacket](http://racket-lang.org/), the language
   * [Exceptions](./C5_Continuation-Passing_Interpreters/5.42.scm)
   * [THREADS](./C5_Continuation-Passing_Interpreters/5.56.scm)
 * Continuation-Passing Style
-  * [CPS-OUT](./C6_Continuation-Passing_Style/6.19.scm)
+  * [CPS-OUT](./C6_Continuation-Passing_Style/6.15.scm)
+  * [CPS-IN](./C6_Continuation-Passing_Style/6.30.scm)
 
 ## Contents
 
@@ -84,4 +85,5 @@ The codes are interpreted with [DrRacket](http://racket-lang.org/), the language
    |   |   |   |   |   |   |   |   |   |   
 :-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
 [6.01](./C6_Continuation-Passing_Style/6.01.md) | [6.02](./C6_Continuation-Passing_Style/6.02.md) | [6.03](./C6_Continuation-Passing_Style/6.03.scm) | [6.04](./C6_Continuation-Passing_Style/6.04.scm) | [6.05](./C6_Continuation-Passing_Style/6.05.scm) | [6.06](./C6_Continuation-Passing_Style/6.06.md) | [6.07](./C6_Continuation-Passing_Style/6.07.scm) | [6.08](./C6_Continuation-Passing_Style/6.08.scm) | [6.09](./C6_Continuation-Passing_Style/6.09.md) | [6.10](./C6_Continuation-Passing_Style/6.10.scm)
-[6.11](./C6_Continuation-Passing_Style/6.11.scm) | [6.12](./C6_Continuation-Passing_Style/6.12.md) | [6.13](./C6_Continuation-Passing_Style/6.13.scm) | [6.14](./C6_Continuation-Passing_Style/6.14.scm) | [6.15](./C6_Continuation-Passing_Style/6.15.scm) | [6.16](./C6_Continuation-Passing_Style/6.16.scm) | [6.17](./C6_Continuation-Passing_Style/6.17.scm) | [6.18](./C6_Continuation-Passing_Style/6.18.scm) | [6.19](./C6_Continuation-Passing_Style/6.19.scm)| 
+[6.11](./C6_Continuation-Passing_Style/6.11.scm) | [6.12](./C6_Continuation-Passing_Style/6.12.md) | [6.13](./C6_Continuation-Passing_Style/6.13.scm) | [6.14](./C6_Continuation-Passing_Style/6.14.scm) | [6.15](./C6_Continuation-Passing_Style/6.15.scm) | [6.16](./C6_Continuation-Passing_Style/6.16.scm) | [6.17](./C6_Continuation-Passing_Style/6.17.scm) | [6.18](./C6_Continuation-Passing_Style/6.18.scm) | [6.19](./C6_Continuation-Passing_Style/6.19.scm) | [6.20](./C6_Continuation-Passing_Style/6.20.scm)
+[6.21](./C6_Continuation-Passing_Style/6.21.scm) | [6.22](./C6_Continuation-Passing_Style/6.22.scm) | [6.23](./C6_Continuation-Passing_Style/6.23.scm) | [6.24](./C6_Continuation-Passing_Style/6.24.scm) | [6.25](./C6_Continuation-Passing_Style/6.25.scm) | [6.26](./C6_Continuation-Passing_Style/6.26.scm) | [6.27](./C6_Continuation-Passing_Style/6.27.scm) | [6.28](./C6_Continuation-Passing_Style/6.28.md) | [6.29](./C6_Continuation-Passing_Style/6.29.md) | [6.30](./C6_Continuation-Passing_Style/6.30.scm)
