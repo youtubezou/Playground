@@ -28,6 +28,9 @@ The codes are interpreted with [DrRacket](http://racket-lang.org/), the language
 * Continuation-Passing Style
   * [CPS-OUT](./C6_Continuation-Passing_Style/6.15.scm)
   * [CPS-IN](./C6_Continuation-Passing_Style/6.30.scm)
+* Types
+  * [CHECKED](./C7_Types/7.11.scm)
+  * [INFERRED]()
 
 ## Contents
 
