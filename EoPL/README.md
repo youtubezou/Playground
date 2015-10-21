@@ -30,7 +30,7 @@ The codes are interpreted with [DrRacket](http://racket-lang.org/), the language
   * [CPS-IN](./C6_Continuation-Passing_Style/6.30.scm)
 * Types
   * [CHECKED](./C7_Types/7.11.scm)
-  * [INFERRED]()
+  * [INFERRED](./C7_Types/7.26.scm)
 
 ## Contents
 
@@ -96,4 +96,5 @@ The codes are interpreted with [DrRacket](http://racket-lang.org/), the language
    |   |   |   |   |   |   |   |   |   |   
 :-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
 [7.01](./C7_Types/7.01.md) | [7.02](./C7_Types/7.02.md) | [7.03](./C7_Types/7.03.md) | [7.04](./C7_Types/7.04.md) | [7.05](./C7_Types/7.05.scm) | [7.06](./C7_Types/7.06.scm) | [7.07](./C7_Types/7.07.scm) | [7.08](./C7_Types/7.08.scm) | [7.09](./C7_Types/7.09.scm) | [7.10](./C7_Types/7.10.scm)
-[7.11](./C7_Types/7.11.scm)| | | | | | | | | 
+[7.11](./C7_Types/7.11.scm) | [7.12](./C7_Types/7.12.md) | [7.13](./C7_Types/7.13.md) | [7.14](./C7_Types/7.14.md) | [7.15](./C7_Types/7.15.md) | [7.16](./C7_Types/7.16.md) | [7.17](./C7_Types/7.17.scm) | [7.18](./C7_Types/7.18.scm) | [7.19](./C7_Types/7.19.md) | [7.20](./C7_Types/7.20.scm)
+[7.21](./C7_Types/7.21.scm) | [7.22](./C7_Types/7.22.scm) | [7.23](./C7_Types/7.23.scm) | [7.24](./C7_Types/7.24.scm) | [7.25](./C7_Types/7.25.scm) | [7.26](./C7_Types/7.26.scm)| | | | 
