@@ -32,9 +32,13 @@ The codes are interpreted with [DrRacket](http://racket-lang.org/), the language
   * [CHECKED](./C7_Types/7.11.scm)
   * [INFERRED](./C7_Types/7.26.scm)
 * Modules
-  * SIMPLE-MODULES(./C8_Modules/8.09.scm)
-  * OPAQUE-TYPES
-
+  * [SIMPLE-MODULES](./C8_Modules/8.09.scm)
+  * [OPAQUE-TYPES](./C8_Modules/8.18.scm)
+  * [PROC-MODULES]
+* Objects and Classes
+  * [CLASSES]
+  * [TYPED-OO]
+  
 ## Contents
 
 ### Chapter 1 Inductive Sets of Data
@@ -103,4 +107,5 @@ The codes are interpreted with [DrRacket](http://racket-lang.org/), the language
 
    |   |   |   |   |   |   |   |   |   |   
 :-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
-[8.01](./C8_Modules/8.01.scm) | [8.02](./C8_Modules/8.02.scm) | [8.04](./C8_Modules/8.04.scm) | [8.05](./C8_Modules/8.05.scm) | [8.06](./C8_Modules/8.06.scm) | [8.08](./C8_Modules/8.08.scm) | [8.09](./C8_Modules/8.09.scm)| | | 
+[8.01](./C8_Modules/8.01.scm) | [8.02](./C8_Modules/8.02.scm) | [8.04](./C8_Modules/8.04.scm) | [8.05](./C8_Modules/8.05.scm) | [8.06](./C8_Modules/8.06.scm) | [8.08](./C8_Modules/8.08.scm) | [8.09](./C8_Modules/8.09.scm) | [8.12](./C8_Modules/8.12.md) | [8.16](./C8_Modules/8.16.scm) | [8.17](./C8_Modules/8.17.scm)
+[8.18](./C8_Modules/8.18.scm)| | | | | | | | | 
