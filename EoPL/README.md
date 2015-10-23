@@ -34,7 +34,7 @@ The codes are interpreted with [DrRacket](http://racket-lang.org/), the language
 * Modules
   * [SIMPLE-MODULES](./C8_Modules/8.09.scm)
   * [OPAQUE-TYPES](./C8_Modules/8.18.scm)
-  * [PROC-MODULES]
+  * [PROC-MODULES](./C8_Modules/8.25.scm)
 * Objects and Classes
   * [CLASSES]
   * [TYPED-OO]
@@ -108,4 +108,4 @@ The codes are interpreted with [DrRacket](http://racket-lang.org/), the language
    |   |   |   |   |   |   |   |   |   |   
 :-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:
 [8.01](./C8_Modules/8.01.scm) | [8.02](./C8_Modules/8.02.scm) | [8.04](./C8_Modules/8.04.scm) | [8.05](./C8_Modules/8.05.scm) | [8.06](./C8_Modules/8.06.scm) | [8.08](./C8_Modules/8.08.scm) | [8.09](./C8_Modules/8.09.scm) | [8.12](./C8_Modules/8.12.md) | [8.16](./C8_Modules/8.16.scm) | [8.17](./C8_Modules/8.17.scm)
-[8.18](./C8_Modules/8.18.scm)| | | | | | | | | 
+[8.18](./C8_Modules/8.18.scm) | [8.19](./C8_Modules/8.19.md) | [8.20](./C8_Modules/8.20.md) | [8.25](./C8_Modules/8.25.scm)| | | | | | 
