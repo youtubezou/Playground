@@ -3,12 +3,10 @@ package mapreduce
 import "container/list"
 import "fmt"
 
-
 type WorkerInfo struct {
 	address string
 	// You can add definitions here.
 }
-
 
 // Clean up all workers by sending a Shutdown RPC to each one of them Collect
 // the number of jobs each work has performed.
@@ -29,6 +27,46 @@ func (mr *MapReduce) KillWorkers() *list.List {
 }
 
 func (mr *MapReduce) RunMaster() *list.List {
-	// Your code here
+	fmt.Println("Deploying map")
+	resultChan := make(chan bool)
+	for i := 0; i < mr.nMap; i++ {
+		go func(idx int) {
+			worker := <- mr.registerChannel
+			var arg DoJobArgs
+			arg.File = mr.file
+			arg.Operation = Map
+			arg.JobNumber = idx
+			arg.NumOtherPhase = mr.nReduce
+			var reply DoJobReply
+			call(worker, "Worker.DoJob", arg, &reply)
+			resultChan <- true
+			mr.registerChannel <- worker
+		}(i)
+	}
+	fmt.Println("Mapping")
+	for i := 0; i < mr.nMap; i++ {
+		<-resultChan
+	}
+	fmt.Println("Finished")
+	fmt.Println("Deploying reduce")
+	for i := 0; i < mr.nReduce; i++ {
+		go func(idx int) {
+			worker := <- mr.registerChannel
+			var arg DoJobArgs
+			arg.File = mr.file
+			arg.Operation = Reduce
+			arg.JobNumber = idx
+			arg.NumOtherPhase = mr.nMap
+			var reply DoJobReply
+			call(worker, "Worker.DoJob", arg, &reply)
+			resultChan <- true
+			mr.registerChannel <- worker
+		}(i)
+	}
+	fmt.Println("Reducing")
+	for i := 0; i < mr.nReduce; i++ {
+		<-resultChan
+	}
+	fmt.Println("Finished")
 	return mr.KillWorkers()
 }
