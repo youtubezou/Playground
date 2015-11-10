@@ -5,10 +5,10 @@ import "crypto/rand"
 import "math/big"
 
 import "fmt"
-import "time"
 
 type Clerk struct {
 	servers []string
+	// You will have to modify this struct.
 }
 
 func nrand() int64 {
@@ -21,6 +21,7 @@ func nrand() int64 {
 func MakeClerk(servers []string) *Clerk {
 	ck := new(Clerk)
 	ck.servers = servers
+	// You'll have to add code here.
 	return ck
 }
 
@@ -64,51 +65,15 @@ func call(srv string, rpcname string,
 // keeps trying forever in the face of all other errors.
 //
 func (ck *Clerk) Get(key string) string {
-	var args GetArgs
-	args.Key = key
-	args.Token = nrand()
-	//fmt.Println("[TODO] ", args)
-	var reply GetReply
-	idx := 0
-	for {
-		ok := call(ck.servers[idx], "KVPaxos.Get", &args, &reply)
-		if ok && reply.Err == OK {
-			break
-		}
-		idx++
-		if idx >= len(ck.servers) {
-			idx = 0
-		}
-		time.Sleep(20 * time.Millisecond)
-	}
-	//fmt.Println("[Complete] ", args, reply)
-	return reply.Value
+	// You will have to modify this function.
+	return ""
 }
 
 //
 // shared by Put and Append.
 //
 func (ck *Clerk) PutAppend(key string, value string, op string) {
-	var args PutAppendArgs
-	args.Key = key
-	args.Value = value
-	args.Op = op
-	args.Token = nrand()
-	//if len(args.Value) < 20 {fmt.Println("[TODO] ", args)}
-	var reply PutAppendReply
-	idx := 0
-	for {
-		ok := call(ck.servers[idx], "KVPaxos.PutAppend", &args, &reply)
-		if ok && reply.Err == OK {
-			break
-		}
-		idx++
-		if idx >= len(ck.servers) {
-			idx = 0
-		}
-		time.Sleep(20 * time.Millisecond)
-	}
-	//fmt.Println("[Complete] ", args, reply)
+	// You will have to modify this function.
 }
 
 func (ck *Clerk) Put(key string, value string) {

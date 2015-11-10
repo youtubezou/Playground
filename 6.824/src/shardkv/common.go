@@ -8,21 +8,23 @@ package shardkv
 //
 // You will have to modify these definitions.
 //
+
 const (
 	OK            = "OK"
 	ErrNoKey      = "ErrNoKey"
 	ErrWrongGroup = "ErrWrongGroup"
-	ErrNotReady   = "ErrNotReady"
 )
 
 type Err string
 
 type PutAppendArgs struct {
-	Token     int64
-	Key       string
-	Value     string
-	Op        string // "Put" or "Append"
-	ConfigNum int
+	Key   string
+	Value string
+	Op    string // "Put" or "Append"
+	// You'll have to add definitions here.
+	// Field names must start with capital letters,
+	// otherwise RPC will break.
+
 }
 
 type PutAppendReply struct {
@@ -30,9 +32,8 @@ type PutAppendReply struct {
 }
 
 type GetArgs struct {
-	Token     int64
-	Key       string
-	ConfigNum int
+	Key string
+	// You'll have to add definitions here.
 }
 
 type GetReply struct {
@@ -40,15 +41,3 @@ type GetReply struct {
 	Value string
 }
 
-type GetShardArgs struct {
-	Token     int64
-	Shard     int
-	ConfigNum int
-}
-
-type GetShardReply struct {
-	Err    Err
-	Gets   map[int64]string
-	Tokens map[int64]bool
-	Values map[string]string
-}

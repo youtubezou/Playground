@@ -12,6 +12,7 @@ type Clerk struct {
 	mu     sync.Mutex // one RPC at a time
 	sm     *shardmaster.Clerk
 	config shardmaster.Config
+	// You'll have to modify Clerk.
 }
 
 func nrand() int64 {
@@ -24,6 +25,7 @@ func nrand() int64 {
 func MakeClerk(shardmasters []string) *Clerk {
 	ck := new(Clerk)
 	ck.sm = shardmaster.MakeClerk(shardmasters)
+	// You'll have to modify MakeClerk.
 	return ck
 }
 
@@ -83,7 +85,9 @@ func key2shard(key string) int {
 func (ck *Clerk) Get(key string) string {
 	ck.mu.Lock()
 	defer ck.mu.Unlock()
-	token := nrand()
+
+	// You'll have to modify Get().
+
 	for {
 		shard := key2shard(key)
 
@@ -95,9 +99,7 @@ func (ck *Clerk) Get(key string) string {
 			// try each server in the shard's replication group.
 			for _, srv := range servers {
 				args := &GetArgs{}
-				args.Token = token
 				args.Key = key
-				args.ConfigNum = ck.config.Num
 				var reply GetReply
 				ok := call(srv, "ShardKV.Get", args, &reply)
 				if ok && (reply.Err == OK || reply.Err == ErrNoKey) {
@@ -120,7 +122,9 @@ func (ck *Clerk) Get(key string) string {
 func (ck *Clerk) PutAppend(key string, value string, op string) {
 	ck.mu.Lock()
 	defer ck.mu.Unlock()
-	token := nrand()
+
+	// You'll have to modify PutAppend().
+
 	for {
 		shard := key2shard(key)
 
@@ -132,11 +136,9 @@ func (ck *Clerk) PutAppend(key string, value string, op string) {
 			// try each server in the shard's replication group.
 			for _, srv := range servers {
 				args := &PutAppendArgs{}
-				args.Token = token
 				args.Key = key
 				args.Value = value
 				args.Op = op
-				args.ConfigNum = ck.config.Num
 				var reply PutAppendReply
 				ok := call(srv, "ShardKV.PutAppend", args, &reply)
 				if ok && reply.Err == OK {

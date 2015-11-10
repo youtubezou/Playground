@@ -16,68 +16,17 @@ type ViewServer struct {
 	rpccount int32 // for testing
 	me       string
 
-	// Your declarations here.
-	ack             bool
-	current         View // the view that acknowledged by the primary server
-	candidate       View // the next view after current view is acknowledged
-	primaryDeadPing int32
-	backupDeadPing  int32
-}
 
-func (vs *ViewServer) PrepareBackup() {
-	vs.candidate.Viewnum = vs.current.Viewnum + 1
-	vs.candidate.Primary = vs.current.Backup
-	vs.candidate.Backup = vs.current.Primary
+	// Your declarations here.
 }
 
 //
 // server Ping RPC handler.
 //
 func (vs *ViewServer) Ping(args *PingArgs, reply *PingReply) error {
-	vs.mu.Lock()
-	if vs.current.Viewnum == 0 {
-		vs.current.Viewnum = 1
-		vs.current.Primary = args.Me
-		vs.primaryDeadPing = 0
-		vs.candidate.Viewnum = vs.current.Viewnum
-	} else if vs.current.Primary == args.Me {
-		if args.Viewnum == 0 {
-			vs.candidate.Viewnum = vs.current.Viewnum + 1
-			vs.candidate.Primary = vs.current.Backup
-			vs.candidate.Backup = args.Me
-			vs.primaryDeadPing = vs.backupDeadPing
-			vs.backupDeadPing = 0
-			vs.ack = true
-		} else {
-			vs.primaryDeadPing = 0
-			if args.Viewnum == vs.current.Viewnum {
-				vs.ack = true
-			}
-		}
-	} else if vs.current.Backup == "" {
-		vs.candidate.Viewnum = vs.current.Viewnum + 1
-		vs.candidate.Primary = vs.current.Primary
-		vs.candidate.Backup = args.Me
-		vs.backupDeadPing = 0
-	} else if vs.current.Backup == args.Me {
-		vs.backupDeadPing = 0
-		if vs.primaryDeadPing >= DeadPings && args.Viewnum == vs.current.Viewnum {
-			if vs.ack {
-				vs.current.Viewnum = vs.current.Viewnum + 1
-				vs.current.Primary = vs.current.Backup
-				vs.current.Backup = ""
-				vs.primaryDeadPing = 0
-			}
-		}
-	}
-	if vs.ack {
-		if vs.candidate.Viewnum > vs.current.Viewnum {
-			vs.current = vs.candidate
-			vs.ack = false
-		}
-	}
-	reply.View = vs.current
-	vs.mu.Unlock()
+
+	// Your code here.
+
 	return nil
 }
 
@@ -85,11 +34,12 @@ func (vs *ViewServer) Ping(args *PingArgs, reply *PingReply) error {
 // server Get() RPC handler.
 //
 func (vs *ViewServer) Get(args *GetArgs, reply *GetReply) error {
-	vs.mu.Lock()
-	reply.View = vs.current
-	vs.mu.Unlock()
+
+	// Your code here.
+
 	return nil
 }
+
 
 //
 // tick() is called once per PingInterval; it should notice
@@ -97,17 +47,8 @@ func (vs *ViewServer) Get(args *GetArgs, reply *GetReply) error {
 // accordingly.
 //
 func (vs *ViewServer) tick() {
-	vs.mu.Lock()
-	vs.primaryDeadPing++
-	if vs.current.Backup != "" {
-		vs.backupDeadPing++
-		if vs.backupDeadPing >= DeadPings {
-			vs.candidate.Viewnum = vs.current.Viewnum + 1
-			vs.candidate.Primary = vs.current.Primary
-			vs.candidate.Backup = ""
-		}
-	}
-	vs.mu.Unlock()
+
+	// Your code here.
 }
 
 //
