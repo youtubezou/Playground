@@ -27,43 +27,37 @@ func (mr *MapReduce) KillWorkers() *list.List {
 }
 
 func (mr *MapReduce) RunMaster() *list.List {
-	fmt.Println("Deploying map")
 	resultChan := make(chan bool)
-	for i := 0; i < mr.nMap; i++ {
-		go func(idx int) {
-			worker := <- mr.registerChannel
-			var arg DoJobArgs
-			arg.File = mr.file
-			arg.Operation = Map
-			arg.JobNumber = idx
-			arg.NumOtherPhase = mr.nReduce
-			var reply DoJobReply
-			call(worker, "Worker.DoJob", arg, &reply)
-			resultChan <- true
-			mr.registerChannel <- worker
-		}(i)
+	deployJob := func(idx int, op JobType, other int) {
+		var arg DoJobArgs
+		arg.File = mr.file
+		arg.Operation = op
+		arg.JobNumber = idx
+		arg.NumOtherPhase = other
+		var reply DoJobReply
+		for {
+			worker := <-mr.registerChannel
+			result := call(worker, "Worker.DoJob", arg, &reply)
+			if result && reply.OK {
+				resultChan <- true
+				mr.registerChannel <- worker
+				break
+			}
+		}
 	}
-	fmt.Println("Mapping")
+	fmt.Println("Deploying map")
+	for i := 0; i < mr.nMap; i++ {
+		go deployJob(i, Map, mr.nReduce)
+	}
+	fmt.Println("Waiting for map")
 	for i := 0; i < mr.nMap; i++ {
 		<-resultChan
 	}
-	fmt.Println("Finished")
 	fmt.Println("Deploying reduce")
 	for i := 0; i < mr.nReduce; i++ {
-		go func(idx int) {
-			worker := <- mr.registerChannel
-			var arg DoJobArgs
-			arg.File = mr.file
-			arg.Operation = Reduce
-			arg.JobNumber = idx
-			arg.NumOtherPhase = mr.nMap
-			var reply DoJobReply
-			call(worker, "Worker.DoJob", arg, &reply)
-			resultChan <- true
-			mr.registerChannel <- worker
-		}(i)
+		go deployJob(i, Reduce, mr.nMap)
 	}
-	fmt.Println("Reducing")
+	fmt.Println("Waiting for reduce")
 	for i := 0; i < mr.nReduce; i++ {
 		<-resultChan
 	}
