@@ -3,32 +3,29 @@ package pbservice
 import "viewservice"
 import "net/rpc"
 import "fmt"
+import "time"
 
 import "crypto/rand"
 import "math/big"
 
-
-type Clerk struct {
-	vs *viewservice.Clerk
-	// Your declarations here
-}
-
-// this may come in handy.
-func nrand() int64 {
+func NewUUID() int64 {
 	max := big.NewInt(int64(1) << 62)
 	bigx, _ := rand.Int(rand.Reader, max)
 	x := bigx.Int64()
 	return x
 }
 
+type Clerk struct {
+	vs   *viewservice.Clerk
+	view viewservice.View
+}
+
 func MakeClerk(vshost string, me string) *Clerk {
 	ck := new(Clerk)
 	ck.vs = viewservice.MakeClerk(me, vshost)
-	// Your ck.* initializations here
-
+	ck.view = viewservice.View{}
 	return ck
 }
-
 
 //
 // call() sends an RPC to the rpcname handler on server srv
@@ -64,6 +61,13 @@ func call(srv string, rpcname string,
 	return false
 }
 
+func (ck *Clerk) UpdateView() {
+	view, err := ck.vs.Ping(ck.view.Viewnum)
+	if err == nil {
+		ck.view = view
+	}
+}
+
 //
 // fetch a key's value from the current primary;
 // if they key has never been set, return "".
@@ -72,9 +76,17 @@ func call(srv string, rpcname string,
 // says the key doesn't exist (has never been Put().
 //
 func (ck *Clerk) Get(key string) string {
-
-	// Your code here.
-
+	var args GetArgs
+	args.Key = key
+	var reply GetReply
+	for {
+		ok := call(ck.view.Primary, "PBServer.Get", &args, &reply)
+		if ok && reply.Err == OK {
+			return reply.Value
+		}
+		time.Sleep(viewservice.PingInterval)
+		ck.UpdateView()
+	}
 	return "???"
 }
 
@@ -82,8 +94,22 @@ func (ck *Clerk) Get(key string) string {
 // send a Put or Append RPC
 //
 func (ck *Clerk) PutAppend(key string, value string, op string) {
-
-	// Your code here.
+	var args PutAppendArgs
+	args.Key = key
+	args.Value = value
+	args.Append = op == "Append"
+	args.Token = NewUUID()
+	args.Primary = ""
+	args.Version = 0
+	var reply PutAppendReply
+	for {
+		ok := call(ck.view.Primary, "PBServer.PutAppend", &args, &reply)
+		if ok && reply.Err == OK {
+			return
+		}
+		time.Sleep(viewservice.PingInterval)
+		ck.UpdateView()
+	}
 }
 
 //
