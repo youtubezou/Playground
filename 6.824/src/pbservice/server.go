@@ -68,6 +68,8 @@ func (pb *PBServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) error 
 				if args.Version+1 == pb.versions[args.Key] {
 					if args.Value != pb.data[args.Key] {
 						ok = false
+					} else {
+						pb.versions[args.Key] = pb.versions[args.Key] - 1
 					}
 				} else {
 					ok = false
