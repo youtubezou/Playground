@@ -397,8 +397,11 @@ func (px *Paxos) Status(seq int) (Fate, interface{}) {
 	if seq < px.NoLockMin() {
 		return Forgotten, nil
 	}
-	if _, ok := px.fates[seq]; !ok {
-		px.fates[seq] = Pending
+	if seq <= px.Max() {
+		if _, exist := px.fates[seq]; !exist {
+			go px.Propose(seq, nil)
+			return Pending, nil
+		}
 	}
 	return px.fates[seq], px.values[seq]
 }
