@@ -1,1 +1,0 @@
-(* Selector is more general. *)
