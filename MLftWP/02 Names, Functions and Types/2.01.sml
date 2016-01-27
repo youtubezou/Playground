@@ -1,0 +1,2 @@
+(* Interpreter: sml *)
+(* use "*.sml" *)
