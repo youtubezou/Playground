@@ -1,0 +1,2 @@
+(* Interpreter: sml *)
+(* user "*.sml" *)
