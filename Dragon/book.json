@@ -1,7 +1,8 @@
 {
     "plugins": [
         "ga",
-        "katex"
+        "katex",
+        "github"
     ],
     "pluginsConfig": {
         "ga": {
