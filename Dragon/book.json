@@ -2,5 +2,10 @@
     "plugins": [
         "ga"
     ],
-    "pluginsConfig": {}
+    "pluginsConfig": {
+        "ga": {
+            "token": "UA-75597402-3",
+            "configuration": "auto"
+        }
+    }
 }
