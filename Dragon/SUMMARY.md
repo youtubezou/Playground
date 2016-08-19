@@ -27,7 +27,7 @@
   * [3.8 Design of a Lexical-Analyzer Generator](03/3.8.md)
   * [3.9 Optimization of DFA-Based Pattern Matches](03/3.9.md)
 * [4 Syntax Analysis](04/README.md)
-  * [4.1 Introduction](04/4.1.md)
+  * 4.1 Introduction
   * [4.2 Context-Free Grammars](04/4.2.md)
   * [4.3 Writing a Grammar](04/4.3.md)
   * [4.4 Top-Down Parsing](04/4.4.md)
@@ -51,9 +51,9 @@
   * [6.6 Control Flow](06/6.6.md)
   * [6.7 Backpatching](06/6.7.md)
   * [6.8 Switch-Statements](06/6.8.md)
-  * [6.9 Intermediate Code for Procedures](06/6.9.md)
+  * 6.9 Intermediate Code for Procedures
 * [7 Run-Time Environments](07/README.md)
-  * [7.1 Storage Organization](07/7.1.md)
+  * 7.1 Storage Organization
   * [7.2 Stack Allocation of Space](07/7.2.md)
   * [7.3 Access to Nonlocal Data on the Stack](07/7.3.md)
   * [7.4 Heap Management](07/7.4.md)
@@ -62,7 +62,7 @@
   * [7.7 Short-Pause Garbage Collection](07/7.7.md)
   * [7.8 Advanced Topics in Garbage Collection](07/7.8.md)
 * [8 Code Generation](08/README.md)
-  * [8.1 Issues in the Design of a Code Generator](08/8.1.md)
+  * 8.1 Issues in the Design of a Code Generator
   * [8.2 The Target Language](08/8.2.md)
   * [8.3 Addresses in the Target Code](08/8.3.md)
   * [8.4 Basic Blocks and Flow Graphs](08/8.4.md)
@@ -83,13 +83,13 @@
   * [9.7 Region-Based Analysis](09/9.7.md)
   * [9.8 Symbolic Analysis](09/9.8.md)
 * [10 Instruction-Level Parallelism](10/README.md)
-  * [10.1 Processor Architectures](10/10.1.md)
+  * 10.1 Processor Architectures
   * [10.2 Code-Scheduling Constraints](10/10.2.md)
   * [10.3 Basic-Block Scheduling](10/10.3.md)
   * [10.4 Global Code Scheduling](10/10.4.md)
   * [10.5 Software Pipelining](10/10.5.md)
 * [11 Optimizing for Parallelism and Locality](11/README.md)
-  * [11.1 Basic Concepts](11/11.1.md)
+  * 11.1 Basic Concepts
   * [11.2 Matrix Multiply: An In-Depth Example](11/11.2.md)
   * [11.3 Iteration Spaces](11/11.3.md)
   * [11.4 Affine Array Indexes](11/11.4.md)
@@ -102,7 +102,7 @@
   * [11.11 Other Uses of Affine Transforms](11/11.11.md)
 * [12 Interprocedural Analysis](12/README.md)
   * [12.1 Basic Concepts](12/12.1.md)
-  * [12.2 Why Interprocedural Analysis?](12/12.2.md)
+  * 12.2 Why Interprocedural Analysis?
   * [12.3 A Logical Representation of Data Flow](12/12.3.md)
   * [12.4 A Simple Pointer-Analysis Algorithm](12/12.4.md)
   * [12.5 Context-Insensitive Interprocedural Analysis](12/12.5.md)
