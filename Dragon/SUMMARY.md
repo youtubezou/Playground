@@ -16,3 +16,13 @@
   * [2.6 Lexical Analysis](02/2.6.md)
   * 2.7 Symbol Tables
   * [2.8 Intermediate Code Generation](02/2.8.md)
+* [3 Lexical Analysis](03/README.md)
+  * [3.1 The Role of the Lexical Analyzer](03/3.1.md)
+  * 3.2 Input Buffering
+  * [3.3 Specification of Tokens](03/3.3.md)
+  * [3.4 Recognition of Tokens](03/3.4.md)
+  * [3.5 The Lexical-Analyzer Generator Lex](03/3.5.md)
+  * [3.6 Finite Automata](03/3.6.md)
+  * [3.7 From Regular Expressions to Automata](03/3.7.md)
+  * [3.8 Design of a Lexical-Analyzer Generator](03/3.8.md)
+  * [3.9 Optimization of DFA-Based Pattern Matches](03/3.9.md)
