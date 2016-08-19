@@ -9,4 +9,3 @@
 * [3.7 From Regular Expressions to Automata](3.7.md)
 * [3.8 Design of a Lexical-Analyzer Generator](3.8.md)
 * [3.9 Optimization of DFA-Based Pattern Matches](3.9.md)
-* 
