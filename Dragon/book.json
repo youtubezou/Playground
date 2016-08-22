@@ -1,7 +1,7 @@
 {
     "plugins": [
         "ga",
-        "katex",
+        "-katex",
         "github",
         "mathjax"
     ],
