@@ -3,7 +3,7 @@
         "ga",
         "github",
         "mathjax",
-        "meta-single",
+        "meta",
         "sitemap-general"
     ],
     "pluginsConfig": {
@@ -14,7 +14,7 @@
         "github": {
             "url": "https://github.com/CyberZHG/Dragon"
         },
-        "meta-single": {
+        "meta": {
             "name": "google-site-verification",
             "content": "AJ-kdEF3EADDcL_4CuIJs3V29ZkarsZBX-YmVZ3FCeA"
         },
