@@ -15,10 +15,10 @@
             "url": "https://github.com/CyberZHG/Dragon"
         },
         "meta": {
-            "data": [{
+            "data": {
                 "name": "google-site-verification",
                 "content": "AJ-kdEF3EADDcL_4CuIJs3V29ZkarsZBX-YmVZ3FCeA"
-            }]
+            }
         },
         "sitemap-general": {
             "prefix": "https://cyberzhg.gitbooks.io/dragon/content/"
