@@ -16,7 +16,12 @@
         },
         "meta": {
             "name": "google-site-verification",
-            "content": "AJ-kdEF3EADDcL_4CuIJs3V29ZkarsZBX-YmVZ3FCeA"
+            "content": "AJ-kdEF3EADDcL_4CuIJs3V29ZkarsZBX-YmVZ3FCeA",
+            "data": {
+                "name": "_name",
+                "content": "_content",
+                "test": "_test"
+            }
         },
         "sitemap-general": {
             "prefix": "https://cyberzhg.gitbooks.io/dragon/content/"
