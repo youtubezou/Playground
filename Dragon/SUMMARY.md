@@ -55,7 +55,7 @@
     * [6.8 Switch-Statements](06/6.8.md)
     * [6.9 Intermediate Code for Procedures](06/69-intermediate-code-for-procedures.md)
 * [7 Run-Time Environments](07/README.md)
-    * 7.1 Storage Organization
+    * [7.1 Storage Organization](07/71-storage-organization.md)
     * [7.2 Stack Allocation of Space](07/7.2.md)
     * [7.3 Access to Nonlocal Data on the Stack](07/7.3.md)
     * [7.4 Heap Management](07/7.4.md)
