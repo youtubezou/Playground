@@ -13,7 +13,7 @@
     * [2.2 Syntax Definition](02/2.2.md)
     * [2.3 Syntax-Directed Translation](02/2.3.md)
     * [2.4 Parsing](02/2.4.md)
-    * 2.5 A Translator for Simple Expression
+    * [2.5 A Translator for Simple Expression](02/25-a-translator-for-simple-expression.md)
     * [2.6 Lexical Analysis](02/2.6.md)
     * 2.7 Symbol Tables
     * [2.8 Intermediate Code Generation](02/2.8.md)
