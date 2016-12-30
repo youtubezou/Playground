@@ -19,7 +19,7 @@
     * [2.8 Intermediate Code Generation](02/2.8.md)
 * [3 Lexical Analysis](03/README.md)
     * [3.1 The Role of the Lexical Analyzer](03/3.1.md)
-    * 3.2 Input Buffering
+    * [3.2 Input Buffering](03/32-input-buffering.md)
     * [3.3 Specification of Tokens](03/3.3.md)
     * [3.4 Recognition of Tokens](03/3.4.md)
     * [3.5 The Lexical-Analyzer Generator Lex](03/3.5.md)
