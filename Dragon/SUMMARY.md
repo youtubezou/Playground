@@ -6,7 +6,7 @@
     * [1.2 The Structure of a Compiler](01/12-the-structure-of-a-compiler.md)
     * [1.3 The Evolution of Programming Languages](01/1.3.md)
     * [1.4 The Science of Building a Compiler](01/14-the-science-of-building-a-compiler.md)
-    * 1.5 Applications of Compiler Technology
+    * [1.5 Applications of Compiler Technology](01/15-applications-of-compiler-technology.md)
     * [1.6 Programming Language Basics](01/1.6.md)
 * [2 A Simple Syntax-Directed Translator](02/README.md)
     * 2.1 Introduction
