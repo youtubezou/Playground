@@ -9,7 +9,7 @@
     * [1.5 Applications of Compiler Technology](01/15-applications-of-compiler-technology.md)
     * [1.6 Programming Language Basics](01/1.6.md)
 * [2 A Simple Syntax-Directed Translator](02/README.md)
-    * 2.1 Introduction
+    * [2.1 Introduction](02/21-introduction.md)
     * [2.2 Syntax Definition](02/2.2.md)
     * [2.3 Syntax-Directed Translation](02/2.3.md)
     * [2.4 Parsing](02/2.4.md)
