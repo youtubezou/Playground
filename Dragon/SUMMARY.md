@@ -28,7 +28,7 @@
     * [3.8 Design of a Lexical-Analyzer Generator](03/3.8.md)
     * [3.9 Optimization of DFA-Based Pattern Matches](03/3.9.md)
 * [4 Syntax Analysis](04/README.md)
-    * 4.1 Introduction
+    * [4.1 Introduction](04/41-introduction.md)
     * [4.2 Context-Free Grammars](04/4.2.md)
     * [4.3 Writing a Grammar](04/4.3.md)
     * [4.4 Top-Down Parsing](04/4.4.1.md)
