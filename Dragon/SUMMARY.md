@@ -15,7 +15,7 @@
     * [2.4 Parsing](02/2.4.md)
     * [2.5 A Translator for Simple Expression](02/25-a-translator-for-simple-expression.md)
     * [2.6 Lexical Analysis](02/2.6.md)
-    * 2.7 Symbol Tables
+    * [2.7 Symbol Tables](02/27-symbol-tables.md)
     * [2.8 Intermediate Code Generation](02/2.8.md)
 * [3 Lexical Analysis](03/README.md)
     * [3.1 The Role of the Lexical Analyzer](03/3.1.md)
