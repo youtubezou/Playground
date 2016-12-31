@@ -104,7 +104,7 @@
     * [11.11 Other Uses of Affine Transforms](11/11.11.md)
 * [12 Interprocedural Analysis](12/README.md)
     * [12.1 Basic Concepts](12/12.1.md)
-    * 12.2 Why Interprocedural Analysis?
+    * [12.2 Why Interprocedural Analysis?](12/12.2.md)
     * [12.3 A Logical Representation of Data Flow](12/12.3.md)
     * [12.4 A Simple Pointer-Analysis Algorithm](12/12.4.md)
     * [12.5 Context-Insensitive Interprocedural Analysis](12/12.5.md)
