@@ -85,13 +85,13 @@
     * [9.7 Region-Based Analysis](09/9.7.md)
     * [9.8 Symbolic Analysis](09/9.8.md)
 * [10 Instruction-Level Parallelism](10/README.md)
-    * 10.1 Processor Architectures
+    * [10.1 Processor Architectures](10/10.1.md)
     * [10.2 Code-Scheduling Constraints](10/10.2.md)
     * [10.3 Basic-Block Scheduling](10/10.3.md)
     * [10.4 Global Code Scheduling](10/10.4.md)
     * [10.5 Software Pipelining](10/10.5.md)
 * [11 Optimizing for Parallelism and Locality](11/README.md)
-    * 11.1 Basic Concepts
+    * [11.1 Basic Concepts](11/11.1.md)
     * [11.2 Matrix Multiply: An In-Depth Example](11/11.2.md)
     * [11.3 Iteration Spaces](11/11.3.md)
     * [11.4 Affine Array Indexes](11/11.4.md)
