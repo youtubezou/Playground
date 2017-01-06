@@ -64,7 +64,7 @@
     * [7.7 Short-Pause Garbage Collection](07/7.7.md)
     * [7.8 Advanced Topics in Garbage Collection](07/7.8.md)
 * [8 Code Generation](08/README.md)
-    * [8.1 Issues in the Design of a Code Generator](8.1.md)
+    * [8.1 Issues in the Design of a Code Generator](08/8.1.md)
     * [8.2 The Target Language](08/8.2.md)
     * [8.3 Addresses in the Target Code](08/8.3.md)
     * [8.4 Basic Blocks and Flow Graphs](08/8.4.md)
